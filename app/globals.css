@@ -1,26 +1,111 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #F3EBDD;
+  --foreground: #09090b;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  --font-sans: var(--font-space-grotesk), sans-serif;
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-space-grotesk), sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+html[data-locale="kr"] body {
+  font-family: var(--font-space-grotesk), var(--font-orbit), sans-serif;
+}
+
+html[data-locale="en"] body {
+  font-family: var(--font-space-grotesk), var(--font-orbit), sans-serif;
+}
+
+.font-ko {
+  font-family: var(--font-space-grotesk), var(--font-orbit), sans-serif;
+}
+
+.font-en {
+  font-family: var(--font-space-grotesk), var(--font-orbit), sans-serif;
+}
+
+.font-caveat {
+  font-family: var(--font-caveat), cursive;
+}
+
+@keyframes sticker-wobble {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-4px) rotate(1.2deg);
+  }
+  50% {
+    transform: translateY(1px) rotate(-1deg);
+  }
+  75% {
+    transform: translateY(-3px) rotate(0.8deg);
+  }
+}
+
+.animate-sticker-wobble {
+  animation: sticker-wobble 4.6s ease-in-out infinite;
+  transform-origin: center;
+  will-change: transform;
+}
+
+@keyframes sticker-enter-left {
+  0% {
+    opacity: 0;
+    transform: translateX(-48px) rotate(-14deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) rotate(0deg);
+  }
+}
+
+@keyframes sticker-enter-center {
+  0% {
+    opacity: 0;
+    transform: translateY(28px) rotate(-4deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) rotate(0deg);
+  }
+}
+
+@keyframes sticker-enter-right {
+  0% {
+    opacity: 0;
+    transform: translateX(48px) rotate(14deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) rotate(0deg);
+  }
+}
+
+.animate-sticker-enter-left {
+  animation: sticker-enter-left 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+.animate-sticker-enter-center {
+  animation: sticker-enter-center 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+.animate-sticker-enter-right {
+  animation: sticker-enter-right 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both;
 }
