@@ -8,7 +8,7 @@ type ResultItem = {
   title: string;
   summary: string;
   steps: string[];
-  screenshots: string[];
+  screenshots?: string[];
   codeBlock?: string;
   screenshotImages?: {
     src: string;
@@ -47,7 +47,7 @@ type PageCopy = {
   approachBlocks: { number: string; title: string; body: string }[];
   architectureDescription: string;
   architectureCards: { title: string; flow: string; body: string }[];
-  learnedDescription: string;
+  learnedDescription?: string;
   resultsDescription: string;
   resultsItems: ResultItem[];
   learnedCards: LearnedCard[];
@@ -385,7 +385,8 @@ type CoreKeywordCard = {
 
 type CoreDescriptionCard = {
   title: string;
-  description: string;
+  description?: string;
+  body?: string;
 };
 
 type CoreStage = {
@@ -429,6 +430,12 @@ type CoreSection = {
     alt: string;
     caption: string;
   };
+  bullets?: string[];
+  imageSrc?: string;
+  imageAlt?: string;
+  imageFallback?: string;
+  codeLabel?: string;
+  code?: string;
 };
 
 type CoreImplementationLocaleCopy = {
@@ -1256,12 +1263,12 @@ node.session.auth.password = ********
 
                 <div
                   className={`grid gap-3 sm:grid-cols-2 ${
-                    section.bullets.length === 2
+                    (section.bullets ?? []).length === 2
                       ? "mx-auto w-full max-w-4xl lg:grid-cols-2"
                       : "lg:grid-cols-3"
                   }`}
                 >
-                  {section.bullets.map((bullet) => (
+                  {(section.bullets ?? []).map((bullet) => (
                     <div
                       key={bullet}
                       className="flex min-h-[5.8rem] items-center justify-center rounded-[1rem] border-2 border-amber-700/75 bg-[#fffaf0] px-4 py-3 shadow-[0_6px_16px_rgba(180,120,20,0.08)]"
@@ -1563,8 +1570,8 @@ export default function HighAvailabilityInfrastructureCaseStudy() {
                     ))}
                   </div>
                 ) : (
-                  <div className={`grid gap-5 ${item.screenshots.length > 1 ? "lg:grid-cols-2" : ""}`}>
-                    {item.screenshots.map((shot: string) => (
+                  <div className={`grid gap-5 ${(item.screenshots ?? []).length > 1 ? "lg:grid-cols-2" : ""}`}>
+                    {(item.screenshots ?? []).map((shot: string) => (
                       <ScreenshotPlaceholder key={shot} text={shot} />
                     ))}
                   </div>

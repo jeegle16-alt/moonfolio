@@ -45,7 +45,7 @@ function subscribe(onStoreChange: () => void) {
 }
 
 export function LocaleProvider({ children }: { children: ReactNode }) {
-  const locale = useSyncExternalStore(subscribe, getSnapshot, () => "kr");
+  const locale = useSyncExternalStore<Locale>(subscribe, getSnapshot, () => "kr");
 
   useEffect(() => {
     document.documentElement.lang = locale === "kr" ? "ko" : "en";
@@ -53,7 +53,7 @@ export function LocaleProvider({ children }: { children: ReactNode }) {
   }, [locale]);
 
   const value = useMemo(
-    () => ({
+    (): LocaleContextValue => ({
       locale,
       setLocale: (nextLocale: Locale) => {
         window.localStorage.setItem(LOCALE_STORAGE_KEY, nextLocale);

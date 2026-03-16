@@ -8,7 +8,7 @@ type ResultItem = {
   title: string;
   summary: string;
   steps: string[];
-  screenshots: string[];
+  screenshots?: string[];
   codeBlock?: string;
   screenshotImages?: {
     src: string;
@@ -41,7 +41,7 @@ type PageCopy = {
   approachBlocks: { number: string; title: string; body: string }[];
   architectureDescription: string;
   architectureCards: { title: string; flow: string; body: string }[];
-  learnedDescription: string;
+  learnedDescription?: string;
   resultsDescription: string;
   resultsItems: ResultItem[];
   learnedCards: LearnedCard[];
@@ -419,7 +419,8 @@ type CoreKeywordCard = {
 
 type CoreDescriptionCard = {
   title: string;
-  description: string;
+  description?: string;
+  body?: string;
 };
 
 type CoreStage = {
@@ -1014,10 +1015,10 @@ function WingItCoreImplementation() {
                 <div className="overflow-hidden rounded-[1.65rem] border border-[#d8ccb4] bg-white shadow-[0_10px_30px_rgba(0,0,0,0.04)]">
                   <div className="grid grid-cols-[minmax(180px,0.9fr)_minmax(0,2.1fr)] border-b border-[#e5ddd0] bg-[#faf6ef] px-6 py-4">
                     <div className="text-center font-ko text-[1rem] font-semibold uppercase tracking-[0.16em] text-amber-700 sm:text-[1.06rem]">
-                      {section.tableHeaders[0]}
+                      {section.tableHeaders?.[0] ?? ""}
                     </div>
                     <div className="text-center font-ko text-[1rem] font-semibold uppercase tracking-[0.16em] text-amber-700 sm:text-[1.06rem]">
-                      {section.tableHeaders[1]}
+                      {section.tableHeaders?.[1] ?? ""}
                     </div>
                   </div>
                   <div className="divide-y divide-[#eee6da]">
@@ -1069,7 +1070,7 @@ function WingItCoreImplementation() {
                       key={stage}
                       className="relative flex min-h-[6.8rem] items-center justify-center rounded-[1.6rem] border border-[#d8ccb4] bg-[#fffdf8] p-5 text-center shadow-[0_10px_26px_rgba(0,0,0,0.04)]"
                     >
-                      {index !== section.flowStages.length - 1 && (
+                      {index !== (section.flowStages?.length ?? 0) - 1 && (
                         <span className="absolute -right-6 top-1/2 hidden -translate-y-1/2 text-xl text-amber-700 xl:block">
                           →
                         </span>
@@ -1089,7 +1090,7 @@ function WingItCoreImplementation() {
                       key={stage.title}
                       className="relative rounded-[1.6rem] border border-[#d8ccb4] bg-[#fffdf8] p-5 shadow-[0_10px_26px_rgba(0,0,0,0.04)]"
                     >
-                      {index !== section.stages.length - 1 && (
+                      {index !== (section.stages?.length ?? 0) - 1 && (
                         <span className="absolute -right-6 top-1/2 hidden -translate-y-1/2 text-xl text-amber-700 xl:block">
                           →
                         </span>
@@ -1168,7 +1169,7 @@ function WingItCoreImplementation() {
                     </div>
                   </div>
                   <div className="space-y-6">
-                    {section.cards.map((card) => (
+                    {(section.cards ?? []).map((card) => (
                       <article
                         key={card.title}
                         className="rounded-[1.6rem] border border-[#d8ccb4] bg-[#fffdf8] p-6 shadow-[0_10px_26px_rgba(0,0,0,0.04)]"
@@ -1180,7 +1181,7 @@ function WingItCoreImplementation() {
                           lang={isKr ? "ko" : "en"}
                           className={`${isKr ? "font-ko break-keep" : "font-en"} mt-3 text-[1rem] leading-8 text-[#4f463d] sm:text-[1.05rem]`}
                         >
-                          {card.body}
+                          {card.body ?? card.description ?? ""}
                         </p>
                       </article>
                     ))}
@@ -1478,8 +1479,8 @@ export default function CICDPipelineCaseStudy() {
                     ))}
                   </div>
                 ) : (
-                  <div className={`grid gap-5 ${item.screenshots.length > 1 ? "lg:grid-cols-2 xl:grid-cols-3" : ""}`}>
-                    {item.screenshots.map((shot: string) => (
+                  <div className={`grid gap-5 ${(item.screenshots ?? []).length > 1 ? "lg:grid-cols-2 xl:grid-cols-3" : ""}`}>
+                    {(item.screenshots ?? []).map((shot: string) => (
                       <ScreenshotPlaceholder key={shot} text={shot} />
                     ))}
                   </div>

@@ -266,9 +266,9 @@ function ProjectPlaceholderCard({
   approachLabel: string;
   approachBody: string;
   implementationLabel: string;
-  implementationPoints: { title: string; body: string }[];
+  implementationPoints: readonly { title: string; body: string }[];
   resultLabel: string;
-  resultItems: string[];
+  resultItems: readonly string[];
   demoLabel: string;
   demoText: string;
   demoSrc?: string;
