@@ -1,6 +1,9 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import CICDPipelineCaseStudy from "@/components/projects/CICDPipelineCaseStudy";
+import HighAvailabilityInfrastructureCaseStudy from "@/components/projects/HighAvailabilityInfrastructureCaseStudy";
 import NyangnyangLetterCaseStudy from "@/components/projects/NyangnyangLetterCaseStudy";
+import RPAAutomationCaseStudy from "@/components/projects/RPAAutomationCaseStudy";
 import WingItCaseStudy from "@/components/projects/WingItCaseStudy";
 import ProjectBody from "@/components/projects/ProjectBody";
 import { getProjectBySlug, projects } from "@/lib/data/projects";
@@ -21,7 +24,7 @@ export async function generateMetadata({
     return {};
   }
 
-  return { title: `${project.title} · Moon Jiwon` };
+  return { title: `${project.title} · Jeewon Moon` };
 }
 
 export default async function ProjectPage({
@@ -42,6 +45,18 @@ export default async function ProjectPage({
 
   if (slug === "wingit") {
     return <WingItCaseStudy />;
+  }
+
+  if (slug === "cicd-pipeline") {
+    return <CICDPipelineCaseStudy />;
+  }
+
+  if (slug === "high-availability-infrastructure") {
+    return <HighAvailabilityInfrastructureCaseStudy />;
+  }
+
+  if (slug === "rpa-automation") {
+    return <RPAAutomationCaseStudy />;
   }
 
   return (

@@ -22,21 +22,14 @@ function SubSection({
   );
 }
 
-const education = [
-  {
-    school: "Dongduk Women's University",
-    degree: "B.S. Computer Science",
-    year: "(2020.3 - 2025.2)",
-  },
-];
-
 const skills: Record<string, string[]> = {
   Languages: ["Java", "Python", "C"],
-  Cloud: ["AWS"],
+  Frontend: ["HTML", "CSS", "JavaScript", "React"],
+  "Cloud DevOps": ["AWS"],
   DevOps: ["Docker", "Kubernetes", "Jenkins", "ArgoCD"],
   Databases: ["MySQL", "SQLite"],
   Automation: ["Automation Anywhere A360"],
-  Tools: ["GitHub", "Notion"],
+  Collaboration: ["GitHub", "Notion", "Slack", "Figma"],
 };
 
 const certificates = [
@@ -92,8 +85,8 @@ export default function About() {
           About
         </h2>
 
-        <div className="mt-6 mb-16 grid grid-cols-1 items-start gap-8 lg:grid-cols-[340px_minmax(0,1fr)] lg:gap-10">
-          <div className="h-[320px] w-[240px] overflow-hidden rounded-sm lg:sticky lg:top-28 lg:h-[520px] lg:w-[340px]">
+        <div className="mb-16 mt-6 grid grid-cols-1 items-start gap-8 lg:grid-cols-[340px_minmax(0,1fr)] lg:gap-10">
+          <div className="h-[320px] w-[240px] overflow-hidden rounded-sm lg:sticky lg:top-28 lg:h-[500px] lg:w-[340px]">
             <img
               src="/jee-pic.gif"
               alt="Portrait of Jeewon Moon"
@@ -101,7 +94,7 @@ export default function About() {
             />
           </div>
 
-          <div className="flex flex-col gap-6 pt-2 lg:pt-4">
+          <div className="flex min-h-[500px] flex-col justify-center gap-6 pt-2 lg:pt-0">
             <div className="font-en flex flex-wrap items-center gap-x-4 gap-y-2 text-base font-semibold uppercase tracking-[0.18em] text-zinc-950 sm:text-lg">
               <span>Jeewon Moon</span>
               <span className="hidden h-1.5 w-1.5 rounded-full bg-zinc-950 sm:inline-block" />
@@ -132,29 +125,6 @@ export default function About() {
 
         <div className="grid grid-cols-1 gap-16 lg:grid-cols-2">
           <div className="flex flex-col gap-12">
-            <SubSection label="Education">
-              <div className="flex flex-col gap-5">
-                {education.map((item) => (
-                  <div
-                    key={item.school}
-                    className="flex items-start justify-between gap-4"
-                  >
-                    <div>
-                      <p className="font-en text-lg font-semibold text-zinc-950">
-                        {item.school}
-                      </p>
-                      <p className="font-en mt-1 text-base text-zinc-950">
-                        {item.degree}
-                      </p>
-                    </div>
-                    <span className="pt-1 font-mono text-sm whitespace-nowrap text-zinc-950">
-                      {item.year}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </SubSection>
-
             <SubSection label="Experience">
               <div className="flex flex-col gap-4">
                 {experience.map((item) => (

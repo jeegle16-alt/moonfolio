@@ -381,9 +381,9 @@ export default function NyangnyangLetterCaseStudy() {
 
         <section className="space-y-14">
           <div className="grid gap-12 xl:grid-cols-[minmax(0,0.88fr)_minmax(0,1.12fr)] xl:items-start">
-            <div className="space-y-8">
+            <div className="-mt-8 space-y-6 sm:-mt-9">
               <p className="font-en text-sm font-semibold uppercase tracking-[0.3em] text-amber-700">{text.eyebrow}</p>
-              <h1 className={`mt-5 max-w-5xl font-normal leading-none tracking-tight text-zinc-950 ${isKr ? "text-[clamp(3.5rem,9vw,8rem)]" : "text-[clamp(3rem,8vw,6.6rem)]"}`}>{text.title}</h1>
+              <h1 className={`mt-3 max-w-5xl font-normal leading-none tracking-tight text-zinc-950 ${isKr ? "text-[clamp(3.5rem,8.6vw,7.6rem)]" : "text-[clamp(3.1rem,7.8vw,6.6rem)]"}`}>{text.title}</h1>
               <p className="break-keep max-w-2xl text-[clamp(1.05rem,1.7vw,1.7rem)] font-medium leading-[1.45] text-zinc-950">{text.subtitle}</p>
               <div className="flex flex-wrap gap-3 text-sm text-zinc-950">
                 {text.meta.map((item) => (
@@ -396,7 +396,7 @@ export default function NyangnyangLetterCaseStudy() {
                 </span>
               </div>
               <div className="pt-1">
-                <div className="font-en inline-flex items-center gap-2 text-[1.08rem] font-medium text-[#4f463d] sm:text-[1.16rem]">
+                <div className="font-en inline-flex items-center gap-2 text-[1.08rem] font-medium text-zinc-950 sm:text-[1.16rem]">
                   <a
                     href="https://github.com/AMEOWZON-AMZ"
                     target="_blank"
@@ -561,7 +561,7 @@ export default function NyangnyangLetterCaseStudy() {
               />
             </button>
             <div className="grid gap-5 md:grid-cols-2">
-              <div className="rounded-[1.75rem] border border-[#d8ccb4] px-6 py-6">
+              <div className="rounded-[1.75rem] border border-[#d8ccb4] bg-[#f7efe2] px-6 py-6">
                 <p className="font-en text-xl font-bold uppercase tracking-[0.08em] text-amber-700 sm:text-[1.55rem]">Data Collection</p>
                 <p className="mt-2 text-[1.02rem] font-semibold text-zinc-950">Android -&gt; API Gateway -&gt; Firehose -&gt; S3 Bronze/Silver/Gold</p>
                 <p className="mt-2 whitespace-pre-line break-keep text-[1.02rem] leading-8 text-[#4f463d] sm:text-[1.12rem]">
@@ -570,7 +570,7 @@ export default function NyangnyangLetterCaseStudy() {
                     : "Separating collection and storage reduces client load, and the three-stage refinement process improves ML input quality."}
                 </p>
               </div>
-              <div className="rounded-[1.75rem] border border-[#d8ccb4] px-6 py-6">
+              <div className="rounded-[1.75rem] border border-[#d8ccb4] bg-[#f7efe2] px-6 py-6">
                 <p className="font-en text-xl font-bold uppercase tracking-[0.08em] text-amber-700 sm:text-[1.55rem]">EKS Service Layer</p>
                 <p className="mt-2 text-[1.02rem] font-semibold text-zinc-950">ALB -&gt; Ingress -&gt; UserPod / Inference Pod / Critical Agent / Msg Pod</p>
                 <p className="mt-2 whitespace-pre-line break-keep text-[1.02rem] leading-8 text-[#4f463d] sm:text-[1.12rem]">
@@ -579,7 +579,7 @@ export default function NyangnyangLetterCaseStudy() {
                     : "Separating pods by function helps contain failures, and AZ1/AZ2 redundancy with pod autoscaling absorbs traffic spikes."}
                 </p>
               </div>
-              <div className="rounded-[1.75rem] border border-[#d8ccb4] px-6 py-6">
+              <div className="rounded-[1.75rem] border border-[#d8ccb4] bg-[#f7efe2] px-6 py-6">
                 <p className="font-en text-xl font-bold uppercase tracking-[0.08em] text-amber-700 sm:text-[1.55rem]">ML Pipeline</p>
                 <p className="mt-2 text-[1.02rem] font-semibold text-zinc-950">SageMaker Training(주 1회) -&gt; S3(model) -&gt; EKS CronJob 배치 추론(매일)</p>
                 <p className="mt-2 whitespace-pre-line break-keep text-[1.02rem] leading-8 text-[#4f463d] sm:text-[1.12rem]">
@@ -588,7 +588,7 @@ export default function NyangnyangLetterCaseStudy() {
                     : "Training and inference are fully separated, so retraining does not interrupt the service, and MLflow tracks experiment history and reproducibility."}
                 </p>
               </div>
-              <div className="rounded-[1.75rem] border border-[#d8ccb4] px-6 py-6">
+              <div className="rounded-[1.75rem] border border-[#d8ccb4] bg-[#f7efe2] px-6 py-6">
                 <p className="font-en text-xl font-bold uppercase tracking-[0.08em] text-amber-700 sm:text-[1.55rem]">CI/CD</p>
                 <p className="mt-2 text-[1.02rem] font-semibold text-zinc-950">GitHub Actions -&gt; ECR -&gt; EKS</p>
                 <p className="mt-2 whitespace-pre-line break-keep text-[1.02rem] leading-8 text-[#4f463d] sm:text-[1.12rem]">

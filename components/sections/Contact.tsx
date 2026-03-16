@@ -8,18 +8,18 @@ export default function Contact() {
 
   return (
     <section id="contact" className="py-16">
-      <div className="max-w-[80vw] mx-auto border-t border-zinc-950 pt-16">
+      <div className="mx-auto max-w-[80vw] pt-16">
         <p className="font-en text-base sm:text-lg font-semibold tracking-[0.22em] uppercase text-amber-600 mb-4">
           Let&apos;s Connect
         </p>
-        <h2 className="font-en text-6xl sm:text-7xl font-bold tracking-tight text-zinc-950 mb-14">
+        <h2 className="font-en mb-8 text-6xl font-bold tracking-tight text-zinc-950 sm:text-7xl">
           Contact
         </h2>
 
         <div className="flex flex-col gap-6 max-w-md">
           <p
             lang={locale === "kr" ? "ko" : "en"}
-            className={`${locale === "kr" ? "font-ko break-keep" : ""} text-lg leading-relaxed text-zinc-500`}
+            className={`${locale === "kr" ? "font-ko break-keep" : ""} text-[1.18rem] leading-relaxed text-zinc-600 sm:text-[1.28rem]`}
           >
             {longFormContent.contact.body[locale]}
           </p>
@@ -29,12 +29,12 @@ export default function Contact() {
           >
             jeegle16@gmail.com
           </a>
-          <div className="flex gap-5 pt-1">
+          <div className="flex gap-6 pt-1">
             <a
               href="https://github.com/jeegle16-alt"
               target="_blank"
               rel="noopener noreferrer"
-              className="font-en text-base text-zinc-400 hover:text-zinc-950 transition-colors"
+              className="font-en text-[1.05rem] text-zinc-500 transition-colors hover:text-zinc-950"
             >
               GitHub
             </a>
@@ -42,7 +42,7 @@ export default function Contact() {
               href="https://www.linkedin.com/in/jeewon-moon-52168a3a5"
               target="_blank"
               rel="noopener noreferrer"
-              className="font-en text-base text-zinc-400 hover:text-zinc-950 transition-colors"
+              className="font-en text-[1.05rem] text-zinc-500 transition-colors hover:text-zinc-950"
             >
               LinkedIn
             </a>

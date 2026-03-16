@@ -8,6 +8,10 @@ import type { Project } from "@/lib/data/projects";
 import ui4 from "@/images/nyangnyang-ui4.png";
 import ui2 from "@/images/nyangnyang-ui2.png";
 import ui5 from "@/images/nyangnyang-ui5.png";
+import wingitUi from "@/images/wingit-ui.png";
+import flowshipUi from "@/images/flowship-ui.png";
+import wordpressUi from "@/images/wordpress-ui.png";
+import rpaUi from "@/images/rpa-ui.png";
 
 export default function ProjectCard({
   project,
@@ -19,8 +23,22 @@ export default function ProjectCard({
   const { locale } = useLocale();
   const isEven = index % 2 === 0;
   const hasEditorialVisual = project.slug === "nyangnyang-letter";
-  const summary =
-    projectSummaries[project.slug]?.description[locale] ?? project.description;
+  const hasWingitVisual = project.slug === "wingit";
+  const hasFlowshipVisual = project.slug === "cicd-pipeline";
+  const hasWordpressVisual = project.slug === "high-availability-infrastructure";
+  const hasRpaVisual = project.slug === "rpa-automation";
+  const useDirectProjectDescription =
+    project.slug === "wingit" ||
+    project.slug === "cicd-pipeline" ||
+    project.slug === "high-availability-infrastructure" ||
+    project.slug === "rpa-automation";
+  const displayTitle =
+    locale === "kr" && project.slug === "nyangnyang-letter"
+      ? "냥냥편지"
+      : project.title;
+  const summary = useDirectProjectDescription
+    ? project.description
+    : projectSummaries[project.slug]?.description[locale] ?? project.description;
 
   return (
     <Link
@@ -36,7 +54,13 @@ export default function ProjectCard({
 
         <div
           className={`flex flex-col gap-5 ${isEven ? "" : "lg:pr-8"} ${
-            hasEditorialVisual ? "" : "lg:col-span-2"
+            hasEditorialVisual ||
+            hasWingitVisual ||
+            hasFlowshipVisual ||
+            hasWordpressVisual ||
+            hasRpaVisual
+              ? ""
+              : "lg:col-span-2"
           } lg:h-full`}
         >
           <div className="space-y-5">
@@ -49,7 +73,7 @@ export default function ProjectCard({
 
             <div className="space-y-3">
               <h3 className="font-en max-w-2xl text-3xl font-bold leading-[1.02] tracking-tight text-zinc-950 transition-colors group-hover:text-amber-700 sm:text-4xl">
-                {project.title}
+                {displayTitle}
               </h3>
               <p
                 lang={locale === "kr" ? "ko" : "en"}
@@ -106,6 +130,62 @@ export default function ProjectCard({
                       src={ui5}
                       alt="NyangNyang Letter UI 3"
                       className="h-auto w-[41%] min-w-[184px] max-w-[248px] object-contain drop-shadow-[0_18px_30px_rgba(0,0,0,0.14)]"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          ) : hasWingitVisual ? (
+            <div className="lg:ml-auto lg:h-full lg:w-full">
+              <div className="relative aspect-[4/3] min-h-[338px] w-full overflow-visible lg:h-full lg:aspect-auto">
+                <div className="absolute bottom-0 right-[-1.5rem] z-10 flex items-end justify-end">
+                  <div className="rotate-2 transition-transform duration-300 group-hover:scale-[1.04]">
+                    <Image
+                      src={wingitUi}
+                      alt="WING IT UI mockup"
+                      className="wingit-cutout-shadow h-auto w-[122%] min-w-[440px] max-w-[680px] object-contain"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          ) : hasFlowshipVisual ? (
+            <div className="lg:ml-auto lg:h-full lg:w-full">
+              <div className="relative aspect-[4/3] min-h-[338px] w-full overflow-visible lg:h-full lg:aspect-auto">
+                <div className="absolute bottom-[-0.4rem] right-[0.8rem] z-10 flex items-end justify-end">
+                  <div className="-rotate-2 transition-transform duration-300 group-hover:scale-[1.04]">
+                    <Image
+                      src={flowshipUi}
+                      alt="FLOWSHIP UI mockup"
+                      className="wingit-cutout-shadow h-auto w-[130%] min-w-[500px] max-w-[760px] object-contain"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          ) : hasWordpressVisual ? (
+            <div className="lg:ml-auto lg:h-full lg:w-full">
+              <div className="relative aspect-[4/3] min-h-[338px] w-full overflow-visible lg:h-full lg:aspect-auto">
+                <div className="absolute bottom-[-0.2rem] right-[0.8rem] z-10 flex items-end justify-end">
+                  <div className="rotate-2 transition-transform duration-300 group-hover:scale-[1.04]">
+                    <Image
+                      src={wordpressUi}
+                      alt="WordPress HA infrastructure mockup"
+                      className="wingit-cutout-shadow h-auto w-[130%] min-w-[500px] max-w-[760px] object-contain"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          ) : hasRpaVisual ? (
+            <div className="lg:ml-auto lg:h-full lg:w-full">
+              <div className="relative aspect-[4/3] min-h-[338px] w-full overflow-visible lg:h-full lg:aspect-auto">
+                <div className="absolute bottom-[-0.2rem] right-[0.8rem] z-10 flex items-end justify-end">
+                  <div className="-rotate-2 transition-transform duration-300 group-hover:scale-[1.04]">
+                    <Image
+                      src={rpaUi}
+                      alt="RPA automation projects UI mockup"
+                      className="wingit-cutout-shadow h-auto w-[130%] min-w-[500px] max-w-[760px] object-contain"
                     />
                   </div>
                 </div>
