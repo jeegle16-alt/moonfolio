@@ -434,7 +434,7 @@ export default function RPAAutomationCaseStudy() {
               </p>
               <h1
                 lang={isKr ? "ko" : "en"}
-                className={`${isKr ? "font-ko break-keep" : "font-en"} mt-3 max-w-5xl text-[clamp(2.7rem,6.6vw,5.6rem)] font-normal leading-none tracking-tight text-zinc-950`}
+                className={`${isKr ? "font-ko break-keep" : "font-en"} mt-3 max-w-5xl text-[clamp(3.6rem,9vw,5.9rem)] font-normal leading-none tracking-tight text-zinc-950`}
                 style={{ wordBreak: "keep-all", overflowWrap: "normal" }}
               >
                 {text.title}

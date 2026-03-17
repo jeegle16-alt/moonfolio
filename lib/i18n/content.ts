@@ -145,19 +145,19 @@ export const projectSummaries: Record<
 export const projectsSectionContent = {
   eyebrow: {
     en: "Selected Work",
-    kr: "주요 프로젝트",
+    kr: "Selected Work",
   },
   title: {
     en: "Projects",
-    kr: "프로젝트",
+    kr: "Projects",
   },
   cta: {
     en: "View project +",
-    kr: "프로젝트 보기 +",
+    kr: "View project +",
   },
   defaultRole: {
     en: "Project",
-    kr: "프로젝트",
+    kr: "Project",
   },
 } as const;
 

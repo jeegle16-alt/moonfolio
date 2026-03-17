@@ -1271,7 +1271,7 @@ export default function CICDPipelineCaseStudy() {
               <p className="font-en text-sm font-semibold uppercase tracking-[0.3em] text-amber-700">
                 {text.eyebrow}
               </p>
-              <h1 className="mt-3 max-w-5xl text-[clamp(2.7rem,6.6vw,5.6rem)] font-normal leading-none tracking-tight text-zinc-950">
+              <h1 className="mt-3 max-w-5xl text-[clamp(3.6rem,9vw,5.9rem)] font-normal leading-none tracking-tight text-zinc-950">
                 {text.title}
               </h1>
               <p className="break-keep max-w-[44rem] text-[clamp(1rem,1.55vw,1.5rem)] font-medium leading-[1.55] text-zinc-950">
