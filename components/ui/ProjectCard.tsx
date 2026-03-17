@@ -1,9 +1,9 @@
-"use client";
+﻿"use client";
 
 import Image from "next/image";
 import Link from "next/link";
 import { useLocale } from "@/components/providers/LocaleProvider";
-import { projectSummaries } from "@/lib/i18n/content";
+import { projectListContent, projectsSectionContent } from "@/lib/i18n/content";
 import type { Project } from "@/lib/data/projects";
 import ui4 from "@/images/nyangnyang-ui4.png";
 import ui2 from "@/images/nyangnyang-ui2.png";
@@ -27,18 +27,13 @@ export default function ProjectCard({
   const hasFlowshipVisual = project.slug === "cicd-pipeline";
   const hasWordpressVisual = project.slug === "high-availability-infrastructure";
   const hasRpaVisual = project.slug === "rpa-automation";
-  const useDirectProjectDescription =
-    project.slug === "wingit" ||
-    project.slug === "cicd-pipeline" ||
-    project.slug === "high-availability-infrastructure" ||
-    project.slug === "rpa-automation";
-  const displayTitle =
-    locale === "kr" && project.slug === "nyangnyang-letter"
-      ? "냥냥편지"
-      : project.title;
-  const summary = useDirectProjectDescription
-    ? project.description
-    : projectSummaries[project.slug]?.description[locale] ?? project.description;
+  const localizedProject = projectListContent[project.slug];
+  const displayTitle = localizedProject?.title[locale] ?? project.title;
+  const displayRole =
+    localizedProject?.role?.[locale] ??
+    project.role ??
+    projectsSectionContent.defaultRole[locale];
+  const summary = localizedProject?.description[locale] ?? project.description;
 
   return (
     <Link
@@ -65,14 +60,20 @@ export default function ProjectCard({
         >
           <div className="space-y-5">
             <div className="flex flex-wrap items-center gap-3">
-              <span className="font-en text-sm font-semibold uppercase tracking-[0.2em] text-amber-700">
-                {project.role ?? "Project"}
+              <span
+                lang={locale === "kr" ? "ko" : "en"}
+                className={`text-sm font-semibold uppercase tracking-[0.2em] text-amber-700 ${locale === "kr" ? "font-ko break-keep" : "font-en"}`}
+              >
+                {displayRole}
               </span>
               <span className="h-px w-12 bg-zinc-950" />
             </div>
 
             <div className="space-y-3">
-              <h3 className="font-en max-w-2xl text-3xl font-bold leading-[1.02] tracking-tight text-zinc-950 transition-colors group-hover:text-amber-700 sm:text-4xl">
+              <h3
+                lang={locale === "kr" ? "ko" : "en"}
+                className={`max-w-2xl text-3xl font-bold leading-[1.02] tracking-tight text-zinc-950 transition-colors group-hover:text-amber-700 sm:text-4xl ${locale === "kr" ? "font-ko break-keep" : "font-en"}`}
+              >
                 {displayTitle}
               </h3>
               <p
@@ -97,8 +98,11 @@ export default function ProjectCard({
             </div>
           </div>
 
-          <span className="font-en mt-auto pt-6 text-base font-semibold uppercase tracking-[0.18em] text-zinc-950 transition-transform group-hover:translate-x-1">
-            View project +
+          <span
+            lang={locale === "kr" ? "ko" : "en"}
+            className={`mt-auto pt-6 text-base font-semibold uppercase tracking-[0.18em] text-zinc-950 transition-transform group-hover:translate-x-1 ${locale === "kr" ? "font-ko break-keep" : "font-en"}`}
+          >
+            {projectsSectionContent.cta[locale]}
           </span>
         </div>
 

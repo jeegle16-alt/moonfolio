@@ -141,3 +141,102 @@ export const projectSummaries: Record<
     },
   },
 };
+
+export const projectsSectionContent = {
+  eyebrow: {
+    en: "Selected Work",
+    kr: "주요 프로젝트",
+  },
+  title: {
+    en: "Projects",
+    kr: "프로젝트",
+  },
+  cta: {
+    en: "View project +",
+    kr: "프로젝트 보기 +",
+  },
+  defaultRole: {
+    en: "Project",
+    kr: "프로젝트",
+  },
+} as const;
+
+export const projectListContent: Record<
+  string,
+  {
+    title: LocalizedText;
+    role?: LocalizedText;
+    description: LocalizedText;
+  }
+> = {
+  "nyangnyang-letter": {
+    title: {
+      en: "NyangNyang Letter",
+      kr: "냥냥레터",
+    },
+    role: {
+      en: "AI / ML Project",
+      kr: "AI / ML 프로젝트",
+    },
+    description: {
+      en: "AI-powered service that detects behavioral changes from smartphone activity and turns them into social support signals.",
+      kr: "스마트폰 행동 데이터를 바탕으로 이상 변화를 감지하고 사회적 돌봄 신호로 연결하는 AI 서비스입니다.",
+    },
+  },
+  wingit: {
+    title: {
+      en: "WING IT",
+      kr: "WING IT",
+    },
+    role: {
+      en: "ML Project",
+      kr: "ML 프로젝트",
+    },
+    description: {
+      en: "An ML service that learns airfare price patterns and recommends the best purchase timing.",
+      kr: "항공권 가격 패턴을 학습해 최적의 구매 시점을 추천하는 ML 서비스입니다.",
+    },
+  },
+  "cicd-pipeline": {
+    title: {
+      en: "FLOWSHIP",
+      kr: "FLOWSHIP",
+    },
+    role: {
+      en: "DevOps Project",
+      kr: "DevOps 프로젝트",
+    },
+    description: {
+      en: "A GitOps-based CI/CD pipeline project built with Jenkins, Docker, ArgoCD, and Kubernetes.",
+      kr: "Jenkins, Docker, ArgoCD, Kubernetes 기반의 GitOps CI/CD 자동 배포 파이프라인 구축 프로젝트입니다.",
+    },
+  },
+  "high-availability-infrastructure": {
+    title: {
+      en: "WordPress High-Availability Infrastructure",
+      kr: "WordPress 고가용성 인프라 구축",
+    },
+    role: {
+      en: "Infrastructure Project",
+      kr: "인프라 프로젝트",
+    },
+    description: {
+      en: "A high-availability WordPress infrastructure project with web redundancy, load balancing, and database replication.",
+      kr: "웹 이중화, 로드 밸런싱, 데이터베이스 복제를 적용한 WordPress 고가용성 인프라 구축 프로젝트입니다.",
+    },
+  },
+  "rpa-automation": {
+    title: {
+      en: "RPA Automation Project Collection",
+      kr: "업무 자동화 프로젝트 모음",
+    },
+    role: {
+      en: "RPA Internship Projects",
+      kr: "RPA 인턴십 프로젝트",
+    },
+    description: {
+      en: "A collection of internship automation projects built with Automation Anywhere for repetitive business tasks.",
+      kr: "라이선스 관리, 데이터 업데이트, 웹 정보 수집 등 반복 업무를 Automation Anywhere로 자동화한 인턴십 프로젝트 모음입니다.",
+    },
+  },
+};
