@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import type { ReactNode } from "react";
 import { useLocale } from "@/components/providers/LocaleProvider";
@@ -34,41 +34,78 @@ const skills: Record<string, string[]> = {
 
 const certificates = [
   {
-    name: "OPIc",
+    name: {
+      kr: "OPIc",
+      en: "OPIc",
+    },
     score: "IH",
     year: "(2025.03.)",
   },
   {
-    name: "TOEIC",
+    name: {
+      kr: "TOEIC",
+      en: "TOEIC",
+    },
     score: "950",
     year: "(2025.04.)",
   },
   {
-    name: "Linux Master Level 2",
+    name: {
+      kr: "리눅스 마스터 2급",
+      en: "Linux Master Level 2",
+    },
     year: "(2026.01.)",
+  },
+  {
+    name: {
+      kr: "네트워크 관리사 2급",
+      en: "Network Administrator Level 2",
+    },
+    year: "(2026.03.)",
   },
 ];
 
 const experience = [
   {
-    name: "Bitek Information & Communication Inc.",
-    role: "RPA Intern",
+    name: {
+      kr: "(주) 바이텍 정보통신",
+      en: "Bitek Information & Communication Inc.",
+    },
+    role: {
+      kr: "RPA 인턴",
+      en: "RPA Intern",
+    },
     year: "(2024.08 - 2025.02)",
   },
   {
-    name: "AWS AI School",
+    name: {
+      kr: "AWS AI School",
+      en: "AWS AI School",
+    },
     year: "(2025.08 - 2026.03)",
   },
 ];
 
 const awards = [
   {
-    name: "Excellence Award",
-    org: "AWS AI School Final Project",
+    name: {
+      kr: "우수상",
+      en: "Excellence Award",
+    },
+    org: {
+      kr: "AWS AI School 최종 프로젝트",
+      en: "AWS AI School Final Project",
+    },
   },
   {
-    name: "3rd Place",
-    org: "AWS Ideathon",
+    name: {
+      kr: "3위",
+      en: "3rd Place",
+    },
+    org: {
+      kr: "AWS 아이디어톤",
+      en: "AWS Ideathon",
+    },
   },
 ];
 
@@ -129,16 +166,22 @@ export default function About() {
               <div className="flex flex-col gap-4">
                 {experience.map((item) => (
                   <div
-                    key={item.name}
+                    key={`${item.name.en}-${item.year}`}
                     className="flex items-start justify-between gap-4"
                   >
                     <div>
-                      <p className="font-en text-lg font-semibold text-zinc-950">
-                        {item.name}
+                      <p
+                        lang={locale === "kr" ? "ko" : "en"}
+                        className={`text-lg font-semibold text-zinc-950 ${locale === "kr" ? "font-ko break-keep" : "font-en"}`}
+                      >
+                        {item.name[locale]}
                       </p>
                       {"role" in item && item.role ? (
-                        <p className="font-en mt-1 text-base text-zinc-950">
-                          {item.role}
+                        <p
+                          lang={locale === "kr" ? "ko" : "en"}
+                          className={`mt-1 text-base text-zinc-950 ${locale === "kr" ? "font-ko break-keep" : "font-en"}`}
+                        >
+                          {item.role[locale]}
                         </p>
                       ) : null}
                     </div>
@@ -154,11 +197,16 @@ export default function About() {
               <div className="flex flex-col gap-4">
                 {certificates.map((cert) => (
                   <div
-                    key={cert.name}
+                    key={`${cert.name.en}-${cert.year}`}
                     className="flex items-start justify-between gap-4"
                   >
                     <p className="font-en flex items-center gap-3 text-lg font-semibold text-zinc-950">
-                      <span>{cert.name}</span>
+                      <span
+                        lang={locale === "kr" ? "ko" : "en"}
+                        className={locale === "kr" ? "font-ko break-keep" : ""}
+                      >
+                        {cert.name[locale]}
+                      </span>
                       {cert.score ? <span>|</span> : null}
                       {cert.score ? <span>{cert.score}</span> : null}
                     </p>
@@ -173,11 +221,19 @@ export default function About() {
             <SubSection label="Awards">
               <div className="flex flex-col gap-4">
                 {awards.map((item) => (
-                  <div key={item.name} className="flex flex-col gap-1">
-                    <p className="font-en text-lg font-semibold text-zinc-950">
-                      {item.name}
+                  <div key={item.name.en} className="flex flex-col gap-1">
+                    <p
+                      lang={locale === "kr" ? "ko" : "en"}
+                      className={`text-lg font-semibold text-zinc-950 ${locale === "kr" ? "font-ko break-keep" : "font-en"}`}
+                    >
+                      {item.name[locale]}
                     </p>
-                    <p className="font-en text-base text-zinc-950">{item.org}</p>
+                    <p
+                      lang={locale === "kr" ? "ko" : "en"}
+                      className={`text-base text-zinc-950 ${locale === "kr" ? "font-ko break-keep" : "font-en"}`}
+                    >
+                      {item.org[locale]}
+                    </p>
                   </div>
                 ))}
               </div>
@@ -212,3 +268,4 @@ export default function About() {
     </section>
   );
 }
+
