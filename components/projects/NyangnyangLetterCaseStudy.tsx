@@ -383,8 +383,8 @@ export default function NyangnyangLetterCaseStudy() {
           <div className="grid gap-12 xl:grid-cols-[minmax(0,0.88fr)_minmax(0,1.12fr)] xl:items-start">
             <div className="-mt-8 space-y-6 sm:-mt-9">
               <p className="font-en text-sm font-semibold uppercase tracking-[0.3em] text-amber-700">{text.eyebrow}</p>
-              <h1 className={`mt-3 max-w-5xl font-normal leading-none tracking-tight text-zinc-950 ${isKr ? "text-[clamp(3.5rem,8.6vw,7.6rem)]" : "text-[clamp(3.1rem,7.8vw,6.6rem)]"}`}>{text.title}</h1>
-              <p className="break-keep max-w-2xl text-[clamp(1.05rem,1.7vw,1.7rem)] font-medium leading-[1.45] text-zinc-950">{text.subtitle}</p>
+              <h1 className="mt-3 max-w-5xl text-[clamp(2.7rem,6.6vw,5.6rem)] font-normal leading-none tracking-tight text-zinc-950">{text.title}</h1>
+              <p className="break-keep max-w-2xl text-[clamp(1rem,1.55vw,1.5rem)] font-medium leading-[1.55] text-zinc-950">{text.subtitle}</p>
               <div className="flex flex-wrap gap-3 text-sm text-zinc-950">
                 {text.meta.map((item) => (
                   <span key={item} className="rounded-full border-2 border-zinc-950 bg-[#f8f1e6] px-4 py-2">

@@ -15,7 +15,7 @@ export default function ProjectBody({ project }: { project: Project }) {
       <div className="flex min-w-0 flex-col gap-10">
         <p
           lang={locale === "kr" ? "ko" : "en"}
-          className={`${locale === "kr" ? "font-ko break-keep" : ""} max-w-4xl text-[1.7rem] leading-relaxed text-zinc-950`}
+          className={`${locale === "kr" ? "font-ko break-keep" : ""} w-full text-[1.7rem] leading-relaxed text-zinc-950`}
         >
           {summary}
         </p>
@@ -28,7 +28,7 @@ export default function ProjectBody({ project }: { project: Project }) {
               </h2>
               <p
                 lang={locale === "kr" ? "ko" : "en"}
-                className={`${locale === "kr" ? "font-ko break-keep" : ""} max-w-4xl text-xl leading-relaxed text-zinc-950 sm:text-2xl`}
+                className={`${locale === "kr" ? "font-ko break-keep" : ""} w-full text-xl leading-relaxed text-zinc-950 sm:text-2xl`}
               >
                 {section.body[locale]}
               </p>

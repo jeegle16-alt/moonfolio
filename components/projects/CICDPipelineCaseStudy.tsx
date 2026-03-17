@@ -210,7 +210,7 @@ pybo-web-5845df55f4-ks9tg   1/1   Running   0   5s`,
     eyebrow: "DEVOPS PROJECT",
     title: "FLOWSHIP",
     subtitle:
-      "A GitOps-based CI/CD pipeline built with Jenkins, Docker, ArgoCD, and Kubernetes.",
+      "A project that built a GitOps-based CI/CD automated deployment pipeline with Jenkins, Docker, ArgoCD, and Kubernetes.",
     meta: ["Personal Project", "GitOps-based CI/CD"],
     links: {
       githubApp: "🔗 GitHub (app)",
@@ -218,20 +218,20 @@ pybo-web-5845df55f4-ks9tg   1/1   Running   0   5s`,
     },
     techSkills: "Tech Skills",
     projectSummaryDescription:
-      "This section shows how the deployment flow was reorganized to reduce repetitive manual work and make operations more stable.",
+      "This section briefly summarizes the problem background, solution approach, and core idea behind the project.",
     whyTitle: "Why I Built This",
     whyCards: [
       {
         title: "Repeated Deployments",
-        body: "Every code change meant rebuilding, creating a new image, and updating the server by hand. A single deploy could take around 30 minutes, and one small mistake could interrupt the service.",
+        body: "Every code change required rebuilding, creating an image, and updating the server manually. A single deployment could take around 30 minutes, and even a small mistake could lead to interruption.",
       },
       {
         title: "Environment Drift",
-        body: "There were cases where things worked locally but failed on the server. Because configuration depended on manual handling, keeping environments consistent was difficult.",
+        body: "There were cases where things worked locally but failed on the server. Because configuration management depended on manual handling, it was difficult to maintain consistency.",
       },
       {
-        title: "Harder Incident Response",
-        body: "When a pod failed, it had to be checked and restarted manually. Traffic spikes also meant scaling the environment by hand.",
+        title: "Operational Limits",
+        body: "Pod failures had to be checked manually and restarted by hand. Even when traffic increased, server expansion had to be handled manually.",
       },
     ],
     approachTitle: "My Approach",
@@ -239,72 +239,72 @@ pybo-web-5845df55f4-ks9tg   1/1   Running   0   5s`,
       {
         number: "01",
         title: "CI Automation",
-        body: "When code is pushed to the App Repo, Jenkins picks it up, builds a new image, and pushes it to Docker Hub. Once the build finishes, the image tag in the Ops Repo is updated automatically.",
+        body: "When code is pushed to the App Repo, Jenkins detects it, builds the image, and pushes it to Docker Hub. After the build finishes, the image tag in the Ops Repo is also updated automatically.",
       },
       {
         number: "02",
-        title: "GitOps Delivery",
-        body: "Argo CD watches the Ops Repo and keeps the cluster aligned with Git. The desired deployment state is managed in one place through the repository.",
+        title: "GitOps Deployment",
+        body: "ArgoCD was configured to detect changes in the Ops Repo and automatically align the cluster state. Git was used as the deployment source of truth so the desired state could be managed in one place.",
       },
       {
         number: "03",
-        title: "K8s Operations",
-        body: "A four-node cluster separates web and DB workloads. ReplicaSet recovery and Rolling Update were used to keep deployments and recovery flows stable.",
+        title: "K8s Operating Structure",
+        body: "Web and DB workloads were placed separately across a 4-node cluster. Recovery and deployment flows were organized more stably based on ReplicaSet and Rolling Update.",
       },
     ],
     architectureDescription:
-      "This architecture shows the full flow from application code changes through image build, deployment config updates, and Kubernetes rollout across the CI/CD pipeline.",
+      "This architecture organizes the full flow in which application code changes move through the CI/CD pipeline into image build, deployment configuration updates, and Kubernetes rollout.",
     architectureCards: [
       {
         title: "CI Pipeline",
         flow: "App Repo → Jenkins → Docker Hub",
-        body: "When code is pushed to the App Repo, Jenkins runs, builds a new Docker image, and pushes it to Docker Hub.",
+        body: "When code is reflected in the App Repo, Jenkins runs, builds a new Docker image, and pushes it to Docker Hub.",
       },
       {
         title: "GitOps Delivery",
         flow: "Ops Repo → Argo CD → Kubernetes",
-        body: "Jenkins updates the image tag in the Ops Repo, and Argo CD detects the change and syncs the Kubernetes cluster to match it.",
+        body: "Jenkins updates the image tag in the Ops Repo, and Argo CD detects the changed deployment configuration and syncs it to the Kubernetes cluster.",
       },
       {
         title: "Kubernetes Runtime",
         flow: "Ingress → Django Pods → MySQL",
-        body: "User requests come in through Ingress and are routed to Django Pods, while the application runs on top of MySQL and persistent storage.",
+        body: "User requests are delivered to Django Pods through Ingress, and the application runs on top of MySQL and persistent storage.",
       },
     ],
     resultsDescription:
-      "The automated deployment pipeline was verified from three angles: GitOps sync, end-to-end CD automation, and self-healing.",
+      "This section verifies whether the automated deployment pipeline actually worked, from GitOps-based sync to self-healing, through three perspectives.",
     resultsItems: [
       {
-        title: "Result 01 — GitOps Sync Verification",
+        title: "Result 01 — GitOps Automatic Deployment Verification",
         summary:
-          "Verified that manifest changes in the Ops Repo were synced through Argo CD and reflected in the actual cluster state.",
+          "Verified that manifest changes in the Ops Repo were automatically synced through Argo CD and reflected in the actual cluster state.",
         steps: [
           "Changed the replicas value in django-deploy.yaml from 2 to 3",
-          "Confirmed that Argo CD detected the change and synced automatically",
-          "Verified that the number of Django Pods in the cluster increased to 3",
+          "Argo CD automatically detected the change and performed sync",
+          "Confirmed that the number of Django pods in the cluster increased to 3",
         ],
         screenshotImages: [
           {
             src: "/images/flowship-argocdsync.png",
             alt: "FlowShip Argo CD sync state",
-            caption: "Argo CD in Synced state",
+            caption: "Argo CD in synced state",
           },
           {
             src: "/images/flowship-k8spods.png",
             alt: "FlowShip Django pods",
-            caption: "Three Django pods running",
+            caption: "Result showing three Django pods running",
           },
         ],
       },
       {
-        title: "Result 02 — End-to-End CD Verification",
+        title: "Result 02 — End-to-End CD Automation Verification",
         summary:
-          "Verified that the full path from a code change to the browser-visible result was connected automatically.",
+          "Verified that the entire pipeline, from code modification to browser-visible output, was connected automatically.",
         steps: [
-          "Changed the navbar text in navbar.html from Pybo to Auto CI/CD Test v4 and pushed the update",
-          "Jenkins triggered automatically and built jeegle16/django-pybo:v4",
-          "The image tag in django-deploy.yaml inside the Ops Repo was updated from v3 to v4",
-          "Argo CD deployed the change automatically",
+          "Modified the navbar text in navbar.html from Pybo to Auto CI/CD Test v4 and pushed it to Git",
+          "Jenkins was triggered automatically and built the image jeegle16/django-pybo:v4",
+          "The image tag in django-deploy.yaml in the Ops Repo was automatically updated from v3 to v4",
+          "ArgoCD automatically deployed the change",
           "Confirmed the updated text Auto CI/CD Test v4 in the browser",
         ],
         screenshotImages: [
@@ -316,22 +316,22 @@ pybo-web-5845df55f4-ks9tg   1/1   Running   0   5s`,
           {
             src: "/images/flowship-argocd-autobuild.png",
             alt: "FlowShip Argo CD auto deployment",
-            caption: "Argo CD automatic deployment",
+            caption: "Argo CD automatic deployment result",
           },
           {
             src: "/images/flowship-pybo.png",
             alt: "FlowShip browser result",
-            caption: "Browser result after deployment",
+            caption: "Browser-applied result",
           },
         ],
       },
       {
         title: "Result 03 — Self-Healing Verification",
         summary:
-          "Verified that ReplicaSet recreated a pod automatically after a running pod was deleted by force.",
+          "Verified that after forcibly deleting a running pod, ReplicaSet automatically created a new pod and restored the service state.",
         steps: [
-          "Ran kubectl delete pod pybo-web-5845df55f4-8mfjm",
-          "Confirmed that a new pod was created automatically in about 5 seconds",
+          "Executed kubectl delete pod pybo-web-5845df55f4-8mfjm",
+          "Confirmed that a new pod was automatically created within about 5 seconds",
           "Verified that the replica count returned to its normal state",
         ],
         codeBlock: `pybo-web-5845df55f4-hptj7   1/1   Running   0   37h
@@ -341,7 +341,7 @@ pybo-web-5845df55f4-ks9tg   1/1   Running   0   5s`,
           {
             src: "/images/flowship-selfhealing.png",
             alt: "FlowShip self-healing result",
-            caption: "Self-healing result",
+            caption: "Self-healing result screen",
             className: "max-w-xl mx-auto",
           },
         ],
@@ -349,12 +349,12 @@ pybo-web-5845df55f4-ks9tg   1/1   Running   0   5s`,
     ],
     learnedCards: [
       {
-        title: "CI/CD is more than build automation",
-        body: "Connecting code changes all the way to a Kubernetes rollout made it clear that CI/CD covers the whole deployment flow, not just the build step.",
+        title: "CI/CD is not just build automation, but the full deployment flow",
+        body: "By directly connecting code changes all the way to Kubernetes rollout, I came to understand that CI/CD is a structure that covers the entire deployment process.",
       },
       {
-        title: "Deployment automation does not end with a single repository",
-        body: "Working with separate App and Ops repositories showed that application code and deployment configuration are connected, but still need to be managed differently.",
+        title: "Deployment automation cannot be completed with only one code repository",
+        body: "By operating App Repo and Ops Repo separately, I learned that code and deployment configuration are connected, but can still be managed differently.",
       },
     ],
   },
@@ -372,7 +372,7 @@ function SectionTitle({
       <h2 className="text-[2.3rem] font-semibold tracking-tight text-zinc-950 sm:text-[2.85rem]">
         {title}
       </h2>
-      <p className="max-w-4xl break-keep text-[1.1rem] leading-8 text-[#4f463d] sm:text-[1.18rem]">
+      <p className="w-full break-keep text-[1.1rem] leading-8 text-[#4f463d] sm:text-[1.18rem]">
         {description}
       </p>
     </div>
@@ -671,32 +671,32 @@ syncOptions:
   en: {
     sectionTitle: "Core Implementation",
     sectionDescription:
-      "This section summarizes the core implementation across infrastructure setup, containerization, Kubernetes deployment design, and end-to-end deployment automation.",
+      "This section organizes the core implementation across the CI pipeline, GitOps-based deployment flow, and Kubernetes runtime environment.",
     sections: [
       {
         number: "01",
         title: "Infrastructure Setup",
-        subtitle: "Built a 4-node Kubernetes cluster with Vagrant and Kubespray",
+        subtitle: "Built a 4-node K8s cluster with Vagrant and Kubespray",
         description:
-          "Four VMs were provisioned through VirtualBox and Vagrant, and Kubernetes v1.31.9 was installed with Kubespray. Worker nodes were then labeled with role=web and role=db so web and database workloads could be separated by role.",
+          "Using VirtualBox and Vagrant, four VMs were created automatically, and a Kubernetes v1.31.9 cluster was installed with the Kubespray Ansible playbook. After that, role=web and role=db labels were assigned to the worker nodes so web and database workloads could be separated by role.",
         keywordCards: [
           {
-            title: "Virtual Environment",
+            title: "Virtual Environment Setup",
             body: "Vagrant + VirtualBox, four VMs created automatically",
           },
           {
-            title: "Cluster Install",
+            title: "Cluster Installation",
             body: "Kubespray Ansible playbook, Kubernetes v1.31.9",
           },
           {
-            title: "Role Split",
+            title: "Node Role Separation",
             body: "role=web (kube-node1, kube-node2) / role=db (kube-node3)",
           },
         ],
         codeBlocks: [
           {
             label: "Node Labeling",
-            code: `# 노드 라벨링
+            code: `# Node labeling
 kubectl label node kube-node1 role=web
 kubectl label node kube-node2 role=web
 kubectl label node kube-node3 role=db`,
@@ -706,9 +706,9 @@ kubectl label node kube-node3 role=db`,
       {
         number: "02",
         title: "App Containerization",
-        subtitle: "Built a Docker image suited for Django and MySQL",
+        subtitle: "Built Docker images suited for the Django and MySQL environment.",
         description:
-          "A Dockerfile was written on top of python:3.10-slim with the libraries needed for MySQL integration. The DB host was set to the Kubernetes Service name pybo-mysql instead of a fixed IP so the application would run through internal cluster DNS.",
+          "A Dockerfile based on python:3.10-slim was written, including the libraries required for MySQL integration so that the Django application could run in a containerized environment. In addition, the DB host was set not to a fixed IP but to the Kubernetes Service name pybo-mysql so that it would operate through internal cluster DNS.",
         codeBlocks: [
           {
             label: "Dockerfile",
@@ -741,16 +741,13 @@ CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]`,
 }`,
           },
         ],
-        screenshots: [
-          "[스크린샷: Docker Hub jeegle16/django-pybo 태그 목록 (v1~v4)]",
-        ],
       },
       {
         number: "03",
         title: "Kubernetes Deployment Design",
-        subtitle: "Separated web and database workloads with role-based Kubernetes resources",
+        subtitle: "Separated the web service and database, and configured Kubernetes resources according to their roles.",
         description:
-          "All resources were managed under the mysite namespace. DB credentials were separated into Secret, MySQL was pinned to role=db nodes through nodeSelector, MySQL data was persisted through PVC, and external requests were routed to the Django service through Ingress.",
+          "All resources were configured to be managed under the mysite namespace. DB credentials were separated into a Secret, MySQL was configured through nodeSelector so that it would be scheduled only on role=db nodes, MySQL data was preserved through a Persistent Volume Claim, and external requests were designed to reach the Django service through Ingress.",
         codeBlocks: [
           {
             label: "django-deploy.yaml core",
@@ -801,14 +798,13 @@ CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]`,
                   number: 8000`,
           },
         ],
-        screenshots: ["[스크린샷: http://pybo.mysite.local/ 브라우저 접속 화면]"],
       },
       {
         number: "04",
         title: "End-to-End Deployment Automation",
-        subtitle: "Jenkins CI + Argo CD CD — from code push to cluster rollout",
+        subtitle: "Jenkins CI + ArgoCD CD — from a single code push all the way to cluster rollout",
         description:
-          "The Jenkinsfile was organized into five stages, with Update Ops Repo as the key step. After the build finishes, Jenkins clones the Ops Repo, replaces the image tag in django-deploy.yaml with the new version, and pushes it back. Argo CD then detects the repository change and syncs it into the Kubernetes cluster.",
+          "The Jenkinsfile was designed with five stages as a CI pipeline. The key part was the Update Ops Repo stage, where Jenkins cloned the Ops Repo after the build finished, replaced the image tag in django-deploy.yaml with the new version, and pushed it back. After that, Argo CD was designed to detect the repository change and automatically sync the Kubernetes cluster.",
         flowStages: [
           "Checkout",
           "Set Version",
@@ -859,7 +855,6 @@ syncOptions:
   - CreateNamespace=true`,
           },
         ],
-        screenshots: ["[스크린샷: Jenkins Pipeline Job 설정 화면]"],
       },
     ],
   },
@@ -968,7 +963,7 @@ function WingItCoreImplementation() {
           </h2>
           <p
             lang={isKr ? "ko" : "en"}
-            className={`${isKr ? "font-ko break-keep" : "font-en"} max-w-4xl text-[1.08rem] leading-8 text-[#4f463d] sm:text-[1.16rem]`}
+            className={`${isKr ? "font-ko break-keep" : "font-en"} w-full text-[1.08rem] leading-8 text-[#4f463d] sm:text-[1.16rem]`}
           >
             {text.sectionDescription}
           </p>
@@ -987,7 +982,7 @@ function WingItCoreImplementation() {
                 </p>
                 <p
                   lang={isKr ? "ko" : "en"}
-                  className={`${isKr ? "font-ko break-keep" : "font-en"} max-w-5xl text-[1.02rem] leading-8 text-[#4f463d] sm:text-[1.12rem]`}
+                  className={`${isKr ? "font-ko break-keep" : "font-en"} w-full text-[1.02rem] leading-8 text-[#4f463d] sm:text-[1.12rem]`}
                 >
                   {section.description}
                 </p>
@@ -1276,10 +1271,10 @@ export default function CICDPipelineCaseStudy() {
               <p className="font-en text-sm font-semibold uppercase tracking-[0.3em] text-amber-700">
                 {text.eyebrow}
               </p>
-              <h1 className="mt-3 max-w-5xl text-[clamp(3.1rem,7.8vw,6.6rem)] font-normal leading-none tracking-tight text-zinc-950">
+              <h1 className="mt-3 max-w-5xl text-[clamp(2.7rem,6.6vw,5.6rem)] font-normal leading-none tracking-tight text-zinc-950">
                 {text.title}
               </h1>
-              <p className="break-keep max-w-[44rem] text-[clamp(1.18rem,2.05vw,2.02rem)] font-medium leading-[1.65] text-zinc-950">
+              <p className="break-keep max-w-[44rem] text-[clamp(1rem,1.55vw,1.5rem)] font-medium leading-[1.55] text-zinc-950">
                 {text.subtitle}
               </p>
               <div className="flex flex-wrap gap-3 text-sm text-zinc-950">

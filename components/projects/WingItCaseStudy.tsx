@@ -231,7 +231,7 @@ function SectionTitle({
       <h2 className="text-[2.3rem] font-semibold tracking-tight text-zinc-950 sm:text-[2.85rem]">
         {title}
       </h2>
-      <p className="max-w-4xl break-keep text-[1.1rem] leading-8 text-[#4f463d] sm:text-[1.18rem]">
+      <p className="w-full break-keep text-[1.1rem] leading-8 text-[#4f463d] sm:text-[1.18rem]">
         {description}
       </p>
     </div>
@@ -579,7 +579,7 @@ function WingItCoreImplementation() {
           </h2>
           <p
             lang={isKr ? "ko" : "en"}
-            className={`${isKr ? "font-ko break-keep" : "font-en"} max-w-4xl text-[1.08rem] leading-8 text-[#4f463d] sm:text-[1.16rem]`}
+            className={`${isKr ? "font-ko break-keep" : "font-en"} w-full text-[1.08rem] leading-8 text-[#4f463d] sm:text-[1.16rem]`}
           >
             {text.sectionDescription}
           </p>
@@ -868,10 +868,10 @@ export default function WingItCaseStudy() {
               <p className="font-en text-sm font-semibold uppercase tracking-[0.3em] text-amber-700">
                 {text.eyebrow}
               </p>
-              <h1 className="mt-3 max-w-5xl text-[clamp(3.1rem,7.8vw,6.6rem)] font-normal leading-none tracking-tight text-zinc-950">
+              <h1 className="mt-3 max-w-5xl text-[clamp(2.7rem,6.6vw,5.6rem)] font-normal leading-none tracking-tight text-zinc-950">
                 {text.title}
               </h1>
-              <p className="break-keep max-w-3xl text-[clamp(1.12rem,1.95vw,1.95rem)] font-medium leading-[1.55] text-zinc-950">
+              <p className="break-keep max-w-3xl text-[clamp(1rem,1.55vw,1.5rem)] font-medium leading-[1.55] text-zinc-950">
                 {text.subtitle}
               </p>
               <div className="flex flex-wrap gap-3 text-sm text-zinc-950">

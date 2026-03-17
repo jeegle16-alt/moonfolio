@@ -1337,13 +1337,13 @@ export default function HighAvailabilityInfrastructureCaseStudy() {
                 {text.eyebrow}
               </p>
               <h1
-                className="mt-3 max-w-5xl text-[clamp(3.1rem,7.8vw,6.6rem)] font-normal leading-none tracking-tight text-zinc-950"
+                className="mt-3 max-w-5xl text-[clamp(2.7rem,6.6vw,5.6rem)] font-normal leading-none tracking-tight text-zinc-950"
                 style={{ wordBreak: "keep-all", overflowWrap: "normal" }}
               >
                 {text.title}
               </h1>
               <p
-                className="break-keep max-w-[44rem] text-[clamp(1.18rem,2.05vw,2.02rem)] font-medium leading-[1.65] text-zinc-950"
+                className="break-keep max-w-[44rem] text-[clamp(1rem,1.55vw,1.5rem)] font-medium leading-[1.55] text-zinc-950"
                 style={{ wordBreak: "keep-all", overflowWrap: "normal" }}
               >
                 {text.subtitle}
