@@ -7,8 +7,8 @@ export default function Contact() {
   const { locale } = useLocale();
 
   return (
-    <section id="contact" className="pb-16 pt-8">
-      <div className="mx-auto max-w-[80vw] pt-6">
+    <section id="contact" className="pb-16 pt-2">
+      <div className="mx-auto max-w-[80vw] pt-0">
         <p className="font-en text-base sm:text-lg font-semibold tracking-[0.22em] uppercase text-amber-600 mb-4">
           Let&apos;s Connect
         </p>
