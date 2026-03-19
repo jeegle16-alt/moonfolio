@@ -117,7 +117,7 @@ export default function ProjectCard({
         >
           {hasEditorialVisual ? (
             <div className="lg:ml-auto lg:h-full lg:w-full">
-              <div className="relative min-h-[196px] w-full overflow-hidden rounded-2xl bg-[#f1e8d8] px-2 pt-4 pb-6 sm:min-h-[248px] sm:px-3 sm:pt-5 sm:pb-6 lg:h-full lg:min-h-[338px] lg:overflow-visible lg:rounded-none lg:bg-transparent lg:px-0 lg:py-0 lg:aspect-auto">
+              <div className="relative min-h-[196px] w-full overflow-hidden rounded-2xl bg-[#f1e8d8] px-2 pt-4 pb-6 sm:min-h-[248px] sm:px-3 sm:pt-5 sm:pb-6 md:min-h-[292px] md:overflow-visible lg:h-full lg:min-h-[338px] lg:overflow-visible lg:rounded-none lg:bg-transparent lg:px-0 lg:py-0 lg:aspect-auto">
                 <div className="absolute left-3 top-3 z-0 flex items-start justify-center sm:left-3 sm:top-3 lg:left-2 lg:top-2">
                   <div className="transition-transform duration-300 group-hover:scale-[1.04] lg:group-hover:scale-[1.04]">
                     <Image

@@ -127,7 +127,7 @@ export default function About() {
             <img
               src="/jee-pic.gif"
               alt="Portrait of Jeewon Moon"
-              className="h-full w-full object-cover object-[center_44%]"
+              className="block h-full w-full scale-[1.01] object-cover object-[center_44%]"
             />
           </div>
 

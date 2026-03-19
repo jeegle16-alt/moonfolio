@@ -29,8 +29,8 @@ export const longFormContent = {
         kr: "기술을 구현하는 일뿐 아니라 서비스 전체 맥락을 이해하고, 팀원들과 방향을 맞춰 더 나은 결과를 만들어가는 과정 역시 중요하게 여깁니다.",
       },
       {
-        en: "Still growing, but I genuinely enjoy the process of learning and improving.",
-        kr: "아직 성장하는 중이지만, 배우고 발전해 가는 과정 자체를 즐기고 있습니다.",
+        en: "Still growing, but I genuinely enjoy the process of learning and improving. 🐾",
+        kr: "아직 성장하는 중이지만, 배우고 발전해 가는 과정 자체를 즐기고 있습니다. 🐾",
       },
     ],
   },
