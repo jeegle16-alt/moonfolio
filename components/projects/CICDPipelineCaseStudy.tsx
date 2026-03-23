@@ -177,7 +177,7 @@ const copy: Record<"kr" | "en", PageCopy> = {
         summary:
           "실행 중인 Pod를 강제로 삭제한 뒤, ReplicaSet이 새로운 Pod를 자동으로 생성해 서비스 상태를 복구하는지 확인했습니다.",
         steps: [
-          "kubectl delete pod pybo-web-5845df55f4-8mfjm 실행",
+          "`kubectl delete pod pybo-web-5845df55f4-8mfjm` 실행",
           "약 5초 내 새로운 Pod가 자동으로 생성되는지 확인",
           "Replica 수가 다시 정상 상태로 유지되는 것을 확인",
         ],
@@ -196,11 +196,11 @@ pybo-web-5845df55f4-ks9tg   1/1   Running   0   5s`,
     ],
     learnedCards: [
       {
-        title: "CI/CD는 빌드가 아니라 배포 전체 흐름이라는 점",
-        body: "코드 변경부터 Kubernetes 반영까지 직접 연결해보며, CI/CD가 전체 배포 과정을 다루는 구조라는 점을 이해하게 되었습니다.",
+        title: "배포 전체 흐름으로서의 CI/CD",
+        body: "코드 변경부터 Kubernetes 반영까지 직접 연결해보며, CI/CD가 단순한 빌드가 아니라 전체 배포 과정을 다루는 구조라는 점을 이해하게 되었습니다.",
       },
       {
-        title: "배포 자동화는 코드 저장소 하나만으로 완성되지 않는다는 점",
+        title: "분리된 저장소 기반의 배포 자동화 구조",
         body: "App Repo와 Ops Repo를 분리해 운영하면서, 코드와 배포 설정은 연결되지만 다르게 관리될 수 있다는 점을 배웠습니다.",
       },
     ],
@@ -330,7 +330,7 @@ pybo-web-5845df55f4-ks9tg   1/1   Running   0   5s`,
         summary:
           "Verified that after forcibly deleting a running pod, ReplicaSet automatically created a new pod and restored the service state.",
         steps: [
-          "Executed kubectl delete pod pybo-web-5845df55f4-8mfjm",
+          "Run `kubectl delete pod pybo-web-5845df55f4-8mfjm`",
           "Confirmed that a new pod was automatically created within about 5 seconds",
           "Verified that the replica count returned to its normal state",
         ],
@@ -349,16 +349,29 @@ pybo-web-5845df55f4-ks9tg   1/1   Running   0   5s`,
     ],
     learnedCards: [
       {
-        title: "CI/CD is not just build automation, but the full deployment flow",
-        body: "By directly connecting code changes all the way to Kubernetes rollout, I came to understand that CI/CD is a structure that covers the entire deployment process.",
+        title: "CI/CD as the Full Deployment Flow",
+        body: "By directly connecting code changes all the way to Kubernetes rollout, I came to understand that CI/CD is a structure that covers the entire deployment process, not just build automation.",
       },
       {
-        title: "Deployment automation cannot be completed with only one code repository",
+        title: "Deployment Automation Architecture Based on Separate Repositories",
         body: "By operating App Repo and Ops Repo separately, I learned that code and deployment configuration are connected, but can still be managed differently.",
       },
     ],
   },
 } as const;
+
+function renderStepText(text: string) {
+  const parts = text.split(/(`[^`]+`)/g);
+  return parts.map((part, i) =>
+    part.startsWith("`") && part.endsWith("`") ? (
+      <code key={i} className="rounded bg-[#e8ddd0] px-1.5 py-0.5 font-mono text-[0.88em] text-zinc-800">
+        {part.slice(1, -1)}
+      </code>
+    ) : (
+      part
+    )
+  );
+}
 
 function SectionTitle({
   title,
@@ -855,6 +868,11 @@ syncOptions:
   - CreateNamespace=true`,
           },
         ],
+        screenshotImage: {
+          src: "/images/flowship-jenkinspipelinejob.png",
+          alt: "FlowShip Jenkins Pipeline Job",
+          caption: "Jenkins Pipeline Job configuration screen",
+        },
       },
     ],
   },
@@ -1266,7 +1284,7 @@ export default function CICDPipelineCaseStudy() {
         </Link>
 
         <section className="space-y-14">
-          <div className="grid gap-12 xl:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] xl:items-start">
+          <div className="grid gap-12 xl:grid-cols-[minmax(0,0.88fr)_minmax(0,1.12fr)] xl:items-start">
             <div className="-mt-8 space-y-6 sm:-mt-9">
               <p className="font-en text-sm font-semibold uppercase tracking-[0.3em] text-amber-700">
                 {text.eyebrow}
@@ -1274,7 +1292,7 @@ export default function CICDPipelineCaseStudy() {
               <h1 className="mt-3 max-w-5xl text-[clamp(3.6rem,9vw,5.9rem)] font-normal leading-none tracking-tight text-zinc-950">
                 {text.title}
               </h1>
-              <p className="break-keep max-w-[44rem] text-[clamp(1rem,1.55vw,1.5rem)] font-medium leading-[1.55] text-zinc-950">
+              <p className="break-keep max-w-2xl text-[clamp(1rem,1.55vw,1.5rem)] font-medium leading-[1.55] text-zinc-950">
                 {text.subtitle}
               </p>
               <div className="flex flex-wrap gap-3 text-sm text-zinc-950">
@@ -1288,7 +1306,7 @@ export default function CICDPipelineCaseStudy() {
                 ))}
               </div>
               <div className="pt-1">
-                <div className="font-en inline-flex items-center gap-3 text-[1.12rem] font-semibold text-zinc-950 sm:text-[1.2rem]">
+                <div className="font-en inline-flex items-center gap-2 text-[1.08rem] font-medium text-zinc-950 sm:text-[1.16rem]">
                   <a
                     href="https://github.com/jeegle16-alt/FlowShip-app"
                     target="_blank"
@@ -1310,7 +1328,7 @@ export default function CICDPipelineCaseStudy() {
               </div>
             </div>
 
-            <div className="space-y-6 pt-6 sm:pt-7">
+            <div className="space-y-6">
               <p className="font-en text-xl font-bold uppercase tracking-[0.08em] text-zinc-950 sm:text-2xl">
                 {text.techSkills}
               </p>
@@ -1446,7 +1464,7 @@ export default function CICDPipelineCaseStudy() {
                         key={`${item.title}-${index}`}
                         className="font-ko break-keep text-[1rem] leading-8 text-[#4f463d] sm:text-[1.05rem]"
                       >
-                        {index + 1}. {step}
+                        {index + 1}. {renderStepText(step)}
                       </li>
                     ))}
                   </ol>

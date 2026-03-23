@@ -102,12 +102,12 @@ const copy = {
       "프로젝트를 진행하며 모델 성능뿐 아니라, 데이터·배포·서빙까지 연결되는 전체 ML 시스템 관점을 배웠습니다.",
     learnedCards: [
       {
-        title: "End-to-End MLOps 관점",
+        title: "End-to-End MLOps 흐름 설계",
         body: "모델 학습에서 끝나는 것이 아니라, 전처리 산출물 관리, 배포, API 서빙까지 이어지는 전체 흐름을 설계하는 경험을 했습니다.",
       },
       {
-        title: "운영 안정성을 위한 구조화",
-        body: "S3 아티팩트 관리, MLflow 실험 추적, CloudWatch 로그 확인을 통해 재현성과 디버깅 가능성이 얼마나 중요한지 체감했습니다.",
+        title: "운영 안정성을 위한 구조의 중요성",
+        body: "S3 아티팩트 관리, MLflow 실험 추적, CloudWatch 로그 확인을 통해 재현성과 디버깅 용이성이 얼마나 중요한지 체감했습니다.",
       },
     ],
   },
@@ -124,7 +124,7 @@ const copy = {
     },
     techSkills: "Tech Skills",
     projectSummaryDescription:
-      "This section outlines how the project reduced uncertainty in airfare buying decisions, from problem framing to prediction and recommendation logic.",
+      "This section briefly summarizes the project's problem background, solution approach, and core idea.",
     whyTitle: "Why We Need",
     whyCards: [
       {
@@ -159,7 +159,7 @@ const copy = {
       },
     ],
     architectureDescription:
-      "This section covers both the real-time path from user request to prediction response and the ML pipeline that automates training and deployment.",
+      "This section covers both the flow from user request to the real-time inference result and the ML pipeline that automates training and deployment.",
     architectureCards: [
       {
         title: "Frontend",
@@ -183,37 +183,37 @@ const copy = {
       },
     ],
     coreImplementationDescription:
-      "The implementation connects model training, recommendation logic, and real-time inference into one working service flow.",
+      "The implementation connects prediction logic with the real-time inference flow to form a single service.",
     coreBlocks: [
       {
         title: "Prediction & Recommendation",
         summary: "Prediction outputs were shaped into actual timing recommendations.",
-        body: "Training data was organized around route, departure date, and purchase timing, with features built from departure urgency, time windows, and recent price movement. At inference time, the service generates 30 candidate dates across the next 30 days, predicts the expected price for each one, and returns both the top three buying windows and the overall price trend.",
+        body: "Training data was organized around route, departure date, and purchase timing, reflecting features such as time until departure, time of day, and recent price trends. At inference time, the service generates 30 candidate dates for the coming 30 days, predicts each expected fare, and compares them to show the top three buying windows along with the overall price trend.",
         layout: "text-left",
       },
       {
         title: "Pipeline & Tracking",
         summary: "The training-to-deployment path was structured to be repeatable.",
-        body: "Preprocessing, training, evaluation, registration, and deployment were grouped into one SageMaker Pipeline flow. Parameters, outputs, and model artifacts were also tracked in MLflow so runs could be compared and revisited with less friction.",
+        body: "Preprocessing, training, evaluation, registration, and deployment were grouped into one SageMaker Pipeline flow, and experiment parameters, results, and model artifacts were recorded in MLflow so they can be reviewed or compared later.",
         layout: "text-top",
       },
       {
         title: "Serving Flow",
         summary: "The service was connected to handle real-time prediction requests.",
-        body: "Frontend requests pass through API Gateway and Lambda before reaching the SageMaker Endpoint. Lambda prepares the input payload, creates candidate buying windows, then reshapes the endpoint result into a response format the UI can use directly.",
+        body: "Frontend requests pass through API Gateway and Lambda before reaching the SageMaker Endpoint. Lambda prepares inputs, creates candidate dates, and then transforms the endpoint responses into the format the UI can use immediately.",
         layout: "image-left",
       },
     ],
     learnedDescription:
-      "The project strengthened an ML systems perspective that connects model quality with data management, deployment, and serving reliability.",
+      "This project taught me a full ML systems perspective connecting data, deployment, and serving with model quality.",
     learnedCards: [
       {
-        title: "An End-to-End MLOps View",
-        body: "The work went beyond model training to include preprocessing outputs, deployment, and API serving as one connected system.",
+        title: "End-to-End MLOps Flow Design",
+        body: "I designed the complete flow, covering preprocessing artifact management, deployment, and API serving—not just the model training step.",
       },
       {
-        title: "Structuring for Operational Stability",
-        body: "Managing S3 artifacts, tracking MLflow experiments, and reading CloudWatch logs made reproducibility and debuggability feel concrete rather than abstract.",
+        title: "Importance of Structured Operational Stability",
+        body: "Managing S3 artifacts, tracking MLflow experiments, and checking CloudWatch logs made the importance of reproducibility and debuggability in production concrete.",
       },
     ],
   },
@@ -390,7 +390,7 @@ const coreImplementationCopy = {
   en: {
     sectionTitle: "Core Implementation",
     sectionDescription:
-      "The service goes beyond model training and connects recommendation logic with a real-time inference path.",
+      "This section summarizes the key technical points from the actual implementation—covering model training, deployment automation, and real-time inference.",
     inference: {
       title: "Inference Flow",
       flow:
@@ -401,38 +401,35 @@ const coreImplementationCopy = {
     featureEngineering: {
       number: "01",
       title: "Feature Engineering",
-      subtitle: "Leakage-free rolling design",
+      subtitle: "Feature design based on time series",
       tableHeaders: ["Feature", "Description"],
       rows: [
-        ["days_until_departure", "Days remaining until departure. The strongest price signal."],
-        ["purchase_time_bucket", "Crawl time bucket (dawn / morning / afternoon / evening)"],
-        ["is_holiday_season", "Peak season flag based on departure month (1,3,4,5,6,8,10,11)"],
+        ["days_until_departure", "Days remaining until departure, a key variable with strong influence on price movement"],
+        ["purchase_time_bucket", "Crawl time window (dawn / morning / afternoon / evening)"],
+        ["purchase_day_of_week", "Day of week at purchase time"],
+        ["is_holiday_season", "Whether the departure date falls in peak season"],
         ["is_weekend_departure", "Whether departure falls on a weekend"],
         ["stops_count", "Number of stops"],
-        ["route_hash", "Route identifier (MD5 -> int conversion)"],
+        ["route_hash", "Route identifier hash value"],
         ["prev_fare", "Price from the previous crawl point"],
         ["min/mean_fare_last_Nd", "Rolling min/mean fare over recent N days (7/14/30)"],
-        ["prev_fare_vs_min/mean_Nd", "Relative price position against recent min/mean windows"],
+        ["prev_fare_vs_min/mean_Nd", "Comparison of the previous price against recent N-day statistics"],
       ],
       cards: [
         {
-          title: "Leakage-free rolling",
+          title: "Reflecting Past Price Trends",
           description:
-            "Without shift(1), the current fare enters the '7-day minimum' window and creates target leakage. The window is applied only up to the previous crawl point.",
-          code: [
-            's_prev = g.set_index("crawl_datetime")["fare_raw"].shift(1)',
-            'g["min_fare_last_7d"] = s_prev.rolling("7D", min_periods=3).min()',
-          ],
+            "Features were built using only price records prior to the prediction point. Rolling statistics over the recent 7, 14, and 30 days were added to capture short-term price movements.",
         },
         {
-          title: "Target transform",
+          title: "Target Transform",
           description:
-            "Fare values range from 1,299 to 930,341 INR with skewness 4.52, so log1p was used during training. Lambda restores the result with expm1() at serving time.",
+            "log1p was applied to the target to reduce skewness in the price distribution. At inference time, the result was converted back to the original price scale.",
         },
         {
-          title: "Route-wise time split",
+          title: "Route-Based Split",
           description:
-            "Instead of random split, each route is sorted by time and split into 7:1:2. This keeps future prices from leaking into training data. Routes with fewer than five records stay in train.",
+            "To evaluate performance under conditions close to actual prediction scenarios, data was split into train, validation, and test sets while preserving the time order within each route.",
         },
       ],
     },
@@ -444,37 +441,37 @@ const coreImplementationCopy = {
         {
           title: "Preprocess",
           body:
-            "Builds featurizer.joblib and shares it across training and inference to prevent feature mismatch.",
+            "A featurizer was built first to ensure the same standard is applied across both training and inference. Preprocessing artifacts were stored separately so consistent feature construction could be maintained in downstream stages.",
         },
         {
           title: "Train",
           body:
-            "Trains XGBoost with early_stopping_rounds=30, reg_alpha=0.1, and reg_lambda=1.0. The featurizer, route_stats.json, and inference.py are bundled together.",
+            "An XGBoost price prediction model was trained, and the preprocessing artifacts and route statistics were bundled together into a model package for inference.",
         },
         {
           title: "Test",
           body:
-            "Evaluates on a route-wise time split test set with RMSE 15,466 INR and MAE 9,529 INR. The test set has 6,354 rows and 23 features.",
+            "Testing was conducted on data separated from training while preserving the time order within each route, and performance was evaluated using RMSE and MAE.",
         },
         {
           title: "Register",
           body:
-            "Splits model.tar.gz into preprocess_model.tar.gz and xgb_model.tar.gz, then packages them for a multi-container endpoint.",
+            "Model files and preprocessing artifacts needed for deployment were organized and registered separately. Artifact structure was split so each component could be loaded directly at serving time.",
         },
         {
           title: "Deploy",
           body:
-            "Creates a SageMaker Endpoint, waits for InService status, and then connects it to Lambda through environment variables.",
+            "The registered model was deployed to a SageMaker Endpoint to enable real-time inference. Lambda was then connected to route user requests through the actual serving path.",
         },
       ],
       tracking:
-        "Each Pipeline run is tagged in MLflow with its ARN so parameters, metrics, and artifacts can be tracked per execution.",
-      dagCaption: "SageMaker Pipeline DAG - 5-stage execution graph",
+        "Parameters, metrics, and artifacts from each run were recorded in MLflow to enable comparison and tracking.",
+      dagCaption: "SageMaker Pipeline execution flow",
     },
     serving: {
       number: "03",
       title: "Serving Architecture",
-      subtitle: "Serving flow and role separation",
+      subtitle: "Serving structure and role separation",
       diagram: {
         request: "User request (JSON)",
         gateway: "API Gateway -> Lambda",
@@ -491,17 +488,17 @@ const coreImplementationCopy = {
       },
       cards: [
         {
-          title: "Why split the roles",
+          title: "Lambda and Endpoint Role Separation",
           body:
             "Input shaping and response formatting stay in Lambda, while the actual prediction runs in the SageMaker Endpoint. The split keeps request handling logic separate from inference logic.",
         },
         {
-          title: "Handling unseen routes",
+          title: "Handling New Routes",
           body:
-            "If an unseen route comes in, the service falls back to the global value stored in route_stats.json. The goal was to keep the response path stable even for routes the model had not seen before.",
+            "If an unseen route comes in, the service falls back to the global value stored in route_stats.json. This ensures a response can still be returned even for routes the model has not seen before.",
         },
       ],
-      lambdaCaption: "Lambda request handling view",
+      lambdaCaption: "Lambda request handling screen",
       endpointCaption: "SageMaker Endpoint status",
     },
   },
@@ -667,7 +664,9 @@ function WingItCoreImplementation() {
                   </p>
                   <p
                     lang={isKr ? "ko" : "en"}
-                    className={`${isKr ? "font-ko break-keep" : "font-en"} mt-3 text-[0.98rem] leading-7 text-[#4f463d] sm:text-[1.03rem]`}
+                    className={`${
+                      isKr ? "font-ko break-keep" : "font-en break-keep"
+                    } mt-3 text-[0.98rem] leading-7 text-[#4f463d] sm:text-[1.03rem]`}
                   >
                     {stage.body}
                   </p>
@@ -716,7 +715,7 @@ function WingItCoreImplementation() {
                   <div className="rounded-[1.2rem] border border-[#eadcc4] bg-[#faf6ef] px-5 py-4 text-[1rem] font-semibold text-zinc-950">
                     {text.serving.diagram.gateway}
                   </div>
-                  <div className="text-lg text-amber-700">↓ (30회 반복)</div>
+                  <div className="text-lg text-amber-700">{isKr ? "↓ (30회 반복)" : "↓ (30 repeats)"}</div>
                   <div className="rounded-[1.2rem] border border-[#eadcc4] bg-[#faf6ef] px-5 py-4 text-[1rem] font-semibold text-zinc-950">
                     {text.serving.diagram.endpoint}
                   </div>
@@ -871,7 +870,7 @@ export default function WingItCaseStudy() {
               <h1 className="mt-3 max-w-5xl text-[clamp(3.6rem,9vw,5.9rem)] font-normal leading-none tracking-tight text-zinc-950">
                 {text.title}
               </h1>
-              <p className="break-keep max-w-3xl text-[clamp(1rem,1.55vw,1.5rem)] font-medium leading-[1.55] text-zinc-950">
+              <p className="break-keep max-w-2xl text-[clamp(1rem,1.55vw,1.5rem)] font-medium leading-[1.55] text-zinc-950">
                 {text.subtitle}
               </p>
               <div className="flex flex-wrap gap-3 text-sm text-zinc-950">
@@ -885,7 +884,7 @@ export default function WingItCaseStudy() {
                 ))}
               </div>
               <div className="pt-1">
-                <div className="font-en inline-flex items-center gap-3 text-[1.12rem] font-semibold text-zinc-950 sm:text-[1.2rem]">
+                <div className="font-en inline-flex items-center gap-2 text-[1.08rem] font-medium text-zinc-950 sm:text-[1.16rem]">
                   <a
                     href="https://github.com/jeegle16-alt/WINGIT"
                     target="_blank"
@@ -905,7 +904,7 @@ export default function WingItCaseStudy() {
               </div>
             </div>
 
-            <div className="space-y-6 pt-6 sm:pt-7">
+            <div className="space-y-6">
               <p className="font-en text-xl font-bold uppercase tracking-[0.08em] text-zinc-950 sm:text-2xl">
                 {text.techSkills}
               </p>

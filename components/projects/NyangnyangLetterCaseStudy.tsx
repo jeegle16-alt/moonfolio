@@ -153,15 +153,15 @@ const copy = {
   en: {
     back: "Back to projects",
     eyebrow: "AI/ML Project",
-    title: "Nyang Nyang Mate",
+    title: "Nyang Nyang Letter",
     subtitle:
       "A mental health monitoring service based on smartphone behavior data.",
     meta: ["Team: AMEOWZON", "Team Members: 5", "Role: ML ENGINEER"],
     techSkills: "Tech Skills",
     projectSummary: {
       title: "Project Summary",
-      description:
-        "A quick look at why this service matters, where current options stop, and what we are proposing instead.",
+    description:
+      "I briefly summarized the project's problem background, the solution approach, and the core idea.",
       needTitle: "Why We Need",
       needCards: [
         {
@@ -172,11 +172,11 @@ const copy = {
         {
           stat: "17.2%",
           body: "A 15-year longitudinal study found a direct link between social isolation and early mortality risk",
-          source: "Korea Disease Control and Prevention Agency · National Institute of Health",
+          source: "Korea Disease Control and Prevention Agency · National Institute of Health, targeting 2.24 million people",
         },
       ],
       needConclusion:
-        "Social isolation is not just an emotional issue. It is a real health risk tied to early mortality.",
+        "Social isolation is not merely an emotional issue; it's a health risk factor tied to increased early mortality risk.",
       existsTitle: "What Exists Today",
       existsCards: [
         {
@@ -202,7 +202,7 @@ const copy = {
         },
       ],
       existsConclusion:
-        "But most existing services still work only when the user notices the problem first and takes action.",
+        "But most existing services still only operate when the person themselves notices and takes action.",
       approachTitle: "Our Approach",
       approachBlocks: [
         {
@@ -213,7 +213,7 @@ const copy = {
         {
           num: "02",
           title: "State Interpretation",
-          body: "Interpret changes in daily patterns based on each person's baseline and the anomaly detection model.",
+          body: "Interpret changes in daily patterns based on each person's baseline and the anomaly detection model, and determine the current state.",
         },
         {
           num: "03",
@@ -224,7 +224,7 @@ const copy = {
     },
     contributionsTitle: "My Contributions",
     contributionsDescription:
-      "My scope covered not only model inference but also the production pipelines that connect model output to user-facing care features.",
+      "I handled not only model inference itself but also the entire operational pipeline through which those results flow into user-facing experiences and safety mechanisms.",
     contributions: [
       "ML state-change detection pipeline: Feature Engineering -> MODEL -> DECODER",
       "Meow audio guardrail: VAD -> Transcribe -> Gemini Flash",
@@ -233,10 +233,10 @@ const copy = {
     ],
     architectureTitle: "System Architecture",
     architectureDescription:
-      "A high-level summary of the end-to-end flow and the parts I implemented.",
+      "I summarized the main data flow and the parts I implemented.",
     deepDiveTitle: "Technical Deep Dive",
     deepDiveDescription:
-      "Four production-oriented modules that shaped the final system.",
+      "This summarizes the technical decision-making for four core modules designed for production.",
     challengesTitle: "Challenges / Troubleshooting",
     challenges: [
       {
@@ -262,7 +262,7 @@ const copy = {
     retrospective: [
       "Once I confirmed that PHQ-8 labels existed for only 18% of the dataset, I stopped pursuing supervised learning and moved to an unsupervised direction.",
       "Explainability became a design priority, so I added a rule-based decoder on top of Isolation Forest.",
-      "Cold start, fallback, and quality gates were included from the first design stage because edge cases fail before ideal cases do.",
+      "By including cold start, fallback, and quality gates from the initial design stage, I came to see the system from a production environment perspective.",
     ],
   },
 } as const;
@@ -273,7 +273,7 @@ function SectionTitle({ title, description }: { title: string; description: stri
       <h2 className="text-[2.3rem] font-semibold tracking-tight text-zinc-950 sm:text-[2.85rem]">
         {title}
       </h2>
-      <p className="max-w-5xl text-[1.08rem] leading-8 text-zinc-950 sm:text-xl">{description}</p>
+      <p className="text-[1.08rem] leading-8 text-zinc-950 sm:text-xl">{description}</p>
     </div>
   );
 }
@@ -581,7 +581,11 @@ export default function NyangnyangLetterCaseStudy() {
               </div>
               <div className="rounded-[1.75rem] border border-[#d8ccb4] bg-[#f7efe2] px-6 py-6">
                 <p className="font-en text-xl font-bold uppercase tracking-[0.08em] text-amber-700 sm:text-[1.55rem]">ML Pipeline</p>
-                <p className="mt-2 text-[1.02rem] font-semibold text-zinc-950">SageMaker Training(주 1회) -&gt; S3(model) -&gt; EKS CronJob 배치 추론(매일)</p>
+                <p className="mt-2 text-[1.02rem] font-semibold text-zinc-950">
+                  {isKr
+                    ? "SageMaker Training(주 1회) -> S3(model) -> EKS CronJob 배치 추론(매일)"
+                    : "SageMaker Training (weekly) -> S3 (model) -> EKS CronJob batch inference (daily)"}
+                </p>
                 <p className="mt-2 whitespace-pre-line break-keep text-[1.02rem] leading-8 text-[#4f463d] sm:text-[1.12rem]">
                   {isKr
                     ? "학습과 추론 완전 분리로 재학습 중 서비스 무영향,\nMLflow로 학습 이력 및 재현성 관리"
@@ -949,19 +953,19 @@ export default function NyangnyangLetterCaseStudy() {
               <div className="absolute left-1/2 top-0 h-[18px] w-[60px] -translate-x-1/2 -translate-y-1/2 rotate-[-2deg] rounded-[2px] bg-[rgba(251,191,36,0.35)]" />
               <p className="text-[1.7rem] font-bold text-amber-700">01</p>
               <p className="mt-2 mb-3 text-xl font-bold text-[#1a1a1a]">
-                {isKr ? "다양한 AI 기술을 서비스 수준으로 통합하기" : "Bringing Different AI Tools into One Service"}
+                {isKr ? "다양한 AI 기술의 서비스 통합" : "Integrating Multiple AI Technologies into One Service"}
               </p>
               <p className="text-[1.02rem] leading-8 text-[#4f463d] sm:text-[1.12rem]">
                 {isKr
                   ? "음성 변환, 콘텐츠 검증, 우선순위 판단까지\n서로 다른 AI 기술을 하나의 서비스 안에서\n각자의 역할에 맞게 연결했습니다."
-                  : "From voice conversion to content checks to priority decisions, I connected different AI tools inside one service so each of them could do a clear job."}
+                  : "From voice conversion to content verification to priority decisions, I connected different AI technologies inside a single service so each could fulfill its role."}
               </p>
             </div>
             <div className="relative mt-3 rotate-[-1.2deg] rounded-[4px] bg-[#FFFDF7] p-8 shadow-[0_4px_16px_rgba(0,0,0,0.10)]">
               <div className="absolute left-1/2 top-0 h-[18px] w-[60px] -translate-x-1/2 -translate-y-1/2 rotate-[3deg] rounded-[2px] bg-[rgba(251,191,36,0.35)]" />
               <p className="text-[1.7rem] font-bold text-amber-700">02</p>
               <p className="mt-2 mb-3 text-xl font-bold text-[#1a1a1a]">
-                {isKr ? "AWS 서비스 조합으로 프로덕션 아키텍처 설계하기" : "Designing a Production Architecture with AWS"}
+                {isKr ? "AWS 서비스 기반 프로덕션 아키텍처 설계" : "Designing an AWS-Based Production Architecture"}
               </p>
               <p className="text-[1.02rem] leading-8 text-[#4f463d] sm:text-[1.12rem]">
                 {isKr

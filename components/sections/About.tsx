@@ -24,8 +24,8 @@ function SubSection({
 
 const skills: Record<string, string[]> = {
   Languages: ["Java", "Python", "C"],
-  Frontend: ["HTML", "CSS", "JavaScript", "React"],
-  "Cloud DevOps": ["AWS"],
+  Frontend: ["HTML", "CSS", "JavaScript"],
+  Cloud: ["AWS"],
   DevOps: ["Docker", "Kubernetes", "Jenkins", "ArgoCD"],
   Databases: ["MySQL", "SQLite"],
   Automation: ["Automation Anywhere A360"],
@@ -99,12 +99,12 @@ const awards = [
   },
   {
     name: {
-      kr: "3위",
-      en: "3rd Place",
+      kr: "우수상",
+      en: "Excellence Award",
     },
     org: {
-      kr: "AWS 아이디어톤",
-      en: "AWS Ideathon",
+      kr: "2025 AMAZON WORKING BACKWARDS",
+      en: "2025 AMAZON WORKING BACKWARDS",
     },
   },
 ];
@@ -123,7 +123,7 @@ export default function About() {
         </h2>
 
         <div className="mb-16 mt-6 grid grid-cols-1 items-start gap-8 lg:grid-cols-[340px_minmax(0,1fr)] lg:gap-10">
-          <div className="h-[320px] w-[240px] overflow-hidden rounded-sm lg:sticky lg:top-28 lg:h-[500px] lg:w-[340px]">
+          <div className="mx-auto h-[320px] w-[240px] overflow-hidden rounded-sm lg:sticky lg:top-28 lg:h-[500px] lg:w-[340px] lg:mx-0">
             <img
               src="/jee-pic.gif"
               alt="Portrait of Jeewon Moon"
@@ -220,8 +220,8 @@ export default function About() {
 
             <SubSection label="Awards">
               <div className="flex flex-col gap-4">
-                {awards.map((item) => (
-                  <div key={item.name.en} className="flex flex-col gap-1">
+            {awards.map((item) => (
+              <div key={`${item.name.en}-${item.org.en}`} className="flex flex-col gap-1">
                     <p
                       lang={locale === "kr" ? "ko" : "en"}
                       className={`text-lg font-semibold text-zinc-950 ${locale === "kr" ? "font-ko break-keep" : "font-en"}`}

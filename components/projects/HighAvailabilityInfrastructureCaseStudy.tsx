@@ -180,11 +180,11 @@ const copy: Record<"kr" | "en", PageCopy> = {
     ],
     learnedCards: [
       {
-        title: "고가용성은 단순히 서버를 여러 대 두는 것으로 끝나지 않는다는 점",
+        title: "고가용성을 위한 통합 인프라 설계",
         body: "웹 서버 이중화뿐 아니라 로드밸런싱, 데이터베이스 복제, 파일 공유 구조까지 함께 설계되어야 서비스가 안정적으로 운영될 수 있다는 점을 직접 확인했습니다.",
       },
       {
-        title: "인프라는 설정만 하는 것이 아니라 실제로 동작하는지 검증하는 과정이 중요하다는 점",
+        title: "동작 검증 중심의 인프라 구축",
         body: "웹 접속, 데이터 동기화, 요청 분산, 장애 대응 테스트를 진행하면서 구성한 구조가 실제로 어떻게 동작하는지 직접 확인할 수 있었습니다.",
       },
     ],
@@ -202,7 +202,7 @@ const copy: Record<"kr" | "en", PageCopy> = {
     },
     techSkills: "Tech Skills",
     projectSummaryDescription:
-      "To improve the limits of a single-server setup, this section outlines how a high-availability WordPress infrastructure was built around web redundancy and load balancing.",
+      "This section briefly summarizes the problem background, solution approach, and core idea behind this project.",
     whyTitle: "Why I Built This",
     whyCards: [
       {
@@ -315,11 +315,11 @@ const copy: Record<"kr" | "en", PageCopy> = {
     ],
     learnedCards: [
       {
-        title: "High availability is more than just adding more servers",
+        title: "Integrated Infrastructure Design for High Availability",
         body: "This project made it clear that stable service operation depends on designing load balancing, database replication, and shared file handling together, not just adding more web servers.",
       },
       {
-        title: "Infrastructure matters only when its behavior is verified",
+        title: "Infrastructure Built Around Verification",
         body: "By testing web access, data synchronization, traffic distribution, and failover, I was able to confirm how the designed structure actually behaves in practice.",
       },
     ],
@@ -643,32 +643,32 @@ syncOptions:
   en: {
     sectionTitle: "Core Implementation",
     sectionDescription:
-      "This section summarizes the core implementation across infrastructure setup, containerization, Kubernetes deployment design, and end-to-end deployment automation.",
+      "This section organizes the core implementation divided into the CI pipeline, GitOps-based deployment flow, and Kubernetes runtime environment.",
     sections: [
       {
         number: "01",
         title: "Infrastructure Setup",
-        subtitle: "Built a 4-node Kubernetes cluster with Vagrant and Kubespray",
+        subtitle: "Built a 4-node K8s cluster with Vagrant and Kubespray",
         description:
           "Four VMs were provisioned through VirtualBox and Vagrant, and Kubernetes v1.31.9 was installed with Kubespray. Worker nodes were then labeled with role=web and role=db so web and database workloads could be separated by role.",
         keywordCards: [
           {
-            title: "Virtual Environment",
+            title: "Virtual Environment Setup",
             body: "Vagrant + VirtualBox, four VMs created automatically",
           },
           {
-            title: "Cluster Install",
+            title: "Cluster Installation",
             body: "Kubespray Ansible playbook, Kubernetes v1.31.9",
           },
           {
-            title: "Role Split",
+            title: "Node Role Separation",
             body: "role=web (kube-node1, kube-node2) / role=db (kube-node3)",
           },
         ],
         codeBlocks: [
           {
             label: "Node Labeling",
-            code: `# 노드 라벨링
+            code: `# Node Labeling
 kubectl label node kube-node1 role=web
 kubectl label node kube-node2 role=web
 kubectl label node kube-node3 role=db`,
@@ -712,9 +712,6 @@ CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]`,
     }
 }`,
           },
-        ],
-        screenshots: [
-          "[스크린샷: Docker Hub jeegle16/django-pybo 태그 목록 (v1~v4)]",
         ],
       },
       {
@@ -773,7 +770,6 @@ CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]`,
                   number: 8000`,
           },
         ],
-        screenshots: ["[스크린샷: http://pybo.mysite.local/ 브라우저 접속 화면]"],
       },
       {
         number: "04",
@@ -831,7 +827,11 @@ syncOptions:
   - CreateNamespace=true`,
           },
         ],
-        screenshots: ["[스크린샷: Jenkins Pipeline Job 설정 화면]"],
+        screenshotImage: {
+          src: "/images/flowship-jenkinspipelinejob.png",
+          alt: "FlowShip Jenkins Pipeline Job",
+          caption: "Jenkins Pipeline Job configuration screen",
+        },
       },
     ],
   },
@@ -1102,9 +1102,9 @@ node.session.auth.password = ********
           description:
             "The load balancer, web servers, database server, and storage server were built as separate VMs, and the network was divided into request, application, and data layers to form the HA structure.",
           bullets: [
-            "Three subnets separated by request, web, and data layers",
-            "Role-based VM definition",
-            "Resource allocation by CPU and memory per server role",
+            "Three-subnet separation across request handling, web service, and data layers",
+            "Role-based VM definitions for load balancer, web servers, database server, and storage server",
+            "Differentiated CPU and memory allocation based on server role",
           ],
           imageSrc: "/images/vagrant.png",
           imageAlt: "Vagrantfile configuration",
@@ -1130,9 +1130,8 @@ end`,
           description:
             "HAProxy was placed in front of two WordPress web servers to distribute requests. Frontend and backend were separated, and round-robin balancing with health checks was applied so the service could continue even if one server failed.",
           bullets: [
-            "Round-robin distribution",
-            "Health-check-based exclusion",
-            "Frontend / backend separation",
+            "Round-robin distribution of traffic evenly across two web servers",
+            "Health-check-based automatic exclusion of failed servers",
           ],
           imageSrc: "/images/haproxy.png",
           imageAlt: "HAProxy configuration",
@@ -1155,9 +1154,8 @@ backend web_servers
           description:
             "MySQL Primary-Secondary replication was configured so changes on the Primary server would be reflected on the Secondary server. This created a replicated data structure prepared for single DB failure.",
           bullets: [
-            "Binlog-based change history",
-            "Secondary read-only separation",
-            "Replication link setup",
+            "Binlog-based replication of data change history from the Primary server",
+            "CHANGE MASTER TO-based setup for the Primary-Secondary replication link",
           ],
           imageSrc: "/images/mysql-replication.png",
           imageAlt: "MySQL replication status output",
@@ -1184,9 +1182,8 @@ START SLAVE;`,
           description:
             "An NFS server was configured so both web servers could use the same WordPress source files and uploaded assets. This kept file responses consistent no matter which server handled the request.",
           bullets: [
-            "Shared WordPress files across both web servers",
-            "Apache permission handling",
-            "SELinux policy enabled",
+            "Shared WordPress source code and uploaded files referenced by both web servers",
+            "NFS permission and SELinux policy adjustment for Apache integration",
           ],
           imageSrc: "/images/nfs.png",
           imageAlt: "NFS export and mount state",
@@ -1208,9 +1205,9 @@ START SLAVE;`,
           description:
             "iSCSI was used to separate the database storage into network-attached volumes. CHAP authentication was applied so only approved servers could access the storage, and the MySQL data directory was moved to the iSCSI mount path.",
           bullets: [
-            "IQN-based identification",
-            "CHAP authentication applied",
-            "_netdev mount order guarantee",
+            "IQN-based per-server identification of storage connection targets",
+            "CHAP authentication allowing only authorized servers to access storage",
+            "_netdev option applied to guarantee correct mount order for network storage at boot",
           ],
           imageSrc: "/images/iscsi.png",
           imageAlt: "iSCSI CHAP configuration",
@@ -1331,7 +1328,7 @@ export default function HighAvailabilityInfrastructureCaseStudy() {
         </Link>
 
         <section className="space-y-14">
-          <div className="grid gap-12 xl:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] xl:items-start">
+          <div className="grid gap-12 xl:grid-cols-[minmax(0,0.88fr)_minmax(0,1.12fr)] xl:items-start">
             <div className="-mt-8 space-y-6 sm:-mt-9">
               <p className="font-en text-sm font-semibold uppercase tracking-[0.3em] text-amber-700">
                 {text.eyebrow}
@@ -1343,7 +1340,7 @@ export default function HighAvailabilityInfrastructureCaseStudy() {
                 {text.title}
               </h1>
               <p
-                className="break-keep max-w-[44rem] text-[clamp(1rem,1.55vw,1.5rem)] font-medium leading-[1.55] text-zinc-950"
+                className="break-keep max-w-2xl text-[clamp(1rem,1.55vw,1.5rem)] font-medium leading-[1.55] text-zinc-950"
                 style={{ wordBreak: "keep-all", overflowWrap: "normal" }}
               >
                 {text.subtitle}
@@ -1359,7 +1356,7 @@ export default function HighAvailabilityInfrastructureCaseStudy() {
                 ))}
               </div>
               <div className="pt-1">
-                <div className="font-en inline-flex items-center gap-3 text-[1.12rem] font-semibold text-zinc-950 sm:text-[1.2rem]">
+                <div className="font-en inline-flex items-center gap-2 text-[1.08rem] font-medium text-zinc-950 sm:text-[1.16rem]">
                   <a
                     href="https://github.com/jeegle16-alt/wordpress-ha-infrastructure/tree/main"
                     target="_blank"
@@ -1385,7 +1382,7 @@ export default function HighAvailabilityInfrastructureCaseStudy() {
               </div>
             </div>
 
-            <div className="space-y-6 pt-6 sm:pt-7">
+            <div className="space-y-6">
               <p className="font-en text-xl font-bold uppercase tracking-[0.08em] text-zinc-950 sm:text-2xl">
                 {text.techSkills}
               </p>

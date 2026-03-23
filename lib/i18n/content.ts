@@ -10,27 +10,27 @@ type ProjectSection = {
 export const longFormContent = {
   hero: {
     intro: {
-      en: "I like building things by hand and learning through trial and error. More than the outcome itself, I care about the experience of learning and growing through the process.",
-      kr: "직접 만들고 부딪혀보면서, 아이디어를 하나씩 구현해가는 과정을 좋아합니다. 결과보다 그 과정에서 배우고, 발전해 나가는 경험을 더 중요하게 생각합니다.",
+      en: "I enjoy building by hand and tackling each idea step by step. I care about the value of learning and growing through the process, beyond just the outcome.",
+      kr: "직접 만들고 부딪혀보며, 아이디어를 하나씩 구현해 가는 과정을 좋아합니다. 결과를 넘어, 배우고 발전해 나가는 과정의 가치를 중요하게 생각합니다.",
     },
   },
   about: {
     paragraphs: [
       {
-        en: "Before building something, I try to think through why the feature is needed in the first place.",
-        kr: "구현에 앞서, 왜 필요한 기능인지부터 먼저 고민하는 개발자입니다.",
+        en: "When I work on ideas, I first think through why the feature is needed instead of immediately building it.",
+        kr: "아이디어를 구현할 때, 바로 만들기보다 먼저 왜 필요한지부터 생각하는 편입니다.",
       },
       {
-        en: "When I run into a problem, I try not to stop at simply making it work. I like looking at what kind of flow would feel more natural for the user as well.",
-        kr: "문제를 마주하면 단순히 만드는 데 그치기보다, 사용자에게 더 자연스러운 흐름이 무엇인지 함께 살펴보려 합니다.",
+        en: "I consider what role the feature plays, how it feels to the user, and how it connects within the service before moving forward.",
+        kr: "이 기능이 어떤 역할을 하는지, 사용자에게는 어떻게 느껴질지, 서비스 안에서 어떻게 이어질지를 함께 보려고 합니다.",
       },
       {
-        en: "Beyond implementing technology, I value understanding the broader service context and working closely with teammates to move toward a better outcome together.",
-        kr: "기술을 구현하는 일뿐 아니라 서비스 전체 맥락을 이해하고, 팀원들과 방향을 맞춰 더 나은 결과를 만들어가는 과정 역시 중요하게 여깁니다.",
+        en: "I enjoy implementing technology, but aligning with teammates to create better results together is equally important.",
+        kr: "기술을 구현하는 일 자체도 좋아하지만, 팀원들과 방향을 맞추며 더 좋은 결과를 만들어 가는 과정 역시 중요하게 생각합니다.",
       },
       {
-        en: "Still growing, but I genuinely enjoy the process of learning and improving. 🐾",
-        kr: "아직 성장하는 중이지만, 배우고 발전해 가는 과정 자체를 즐기고 있습니다. 🐾",
+        en: "I'm steadily growing as I build experience step by step.",
+        kr: "하나씩 경험을 쌓아가며 꾸준히 성장하고 있습니다.",
       },
     ],
   },
@@ -172,7 +172,7 @@ export const projectListContent: Record<
   "nyangnyang-letter": {
     title: {
       en: "NyangNyang Letter",
-      kr: "냥냥레터",
+      kr: "냥냥편지",
     },
     role: {
       en: "AI / ML Project",

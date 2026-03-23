@@ -130,18 +130,18 @@ const copy = {
     implementationLabel: "Core Implementation",
     implementationPoints: [
       {
-        title: "1. Recorder -> SharePoint Action",
+        title: "1. Recorder -> SharePoint Action Switch",
         body: "Instead of relying on UI-following actions, the flow was changed to access SharePoint files directly with Client ID authentication, making it less dependent on UI changes.",
       },
       {
-        title: "2. Excel Formula -> Datetime Action",
+        title: "2. Excel Formula -> Datetime Action Switch",
         body: "Instead of recalculating the entire dataset repeatedly, only the rows needed were checked and classified based on date variables, which improved both processing speed and maintainability.",
       },
     ],
     resultLabel: "Result",
     resultItems: [
       "Automated the monthly classification and notification workflow",
-      "Reduced dependence on SharePoint UI navigation",
+      "Reduced dependence on SharePoint UI navigation, improving operational stability",
       "Lowered maintenance overhead with date-based classification logic",
       "Improved efficiency for a recurring monthly task",
     ],
@@ -355,7 +355,7 @@ function ProjectPlaceholderCard({
             {resultItems.map((item) => (
               <div
                 key={`${number}-${item}`}
-                className="rounded-[1rem] border border-[#d8ccb4] bg-[#fffdf8] px-4 py-3 text-center text-zinc-950"
+                className="flex items-center justify-center rounded-[1rem] border border-[#d8ccb4] bg-[#fffdf8] px-4 py-3 text-center text-zinc-950"
               >
                 {item}
               </div>
@@ -427,7 +427,7 @@ export default function RPAAutomationCaseStudy() {
         </Link>
 
         <section className="space-y-14">
-          <div className="grid gap-12 xl:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] xl:items-start">
+          <div className="grid gap-12 xl:grid-cols-[minmax(0,0.88fr)_minmax(0,1.12fr)] xl:items-start">
             <div className="-mt-8 space-y-6 sm:-mt-9">
               <p className="font-en text-sm font-semibold uppercase tracking-[0.3em] text-amber-700">
                 {text.eyebrow}
@@ -441,7 +441,7 @@ export default function RPAAutomationCaseStudy() {
               </h1>
               <p
                 lang={isKr ? "ko" : "en"}
-                className={`${isKr ? "font-ko break-keep" : "font-en"} break-keep max-w-[44rem] text-[clamp(1rem,1.55vw,1.5rem)] font-medium leading-[1.55] text-zinc-950`}
+                className={`${isKr ? "font-ko break-keep" : "font-en"} break-keep max-w-2xl text-[clamp(1rem,1.55vw,1.5rem)] font-medium leading-[1.55] text-zinc-950`}
                 style={{ wordBreak: "keep-all", overflowWrap: "normal" }}
               >
                 {text.subtitle}
@@ -458,11 +458,11 @@ export default function RPAAutomationCaseStudy() {
               </div>
             </div>
 
-            <div className="space-y-6 pt-6 sm:pt-7">
+            <div className="space-y-6">
               <p className="font-en text-xl font-bold uppercase tracking-[0.08em] text-zinc-950 sm:text-2xl">
                 {text.techSkills}
               </p>
-              <div className="space-y-5">
+              <div className="space-y-6">
                 {techStackGroups.map((group) => (
                   <div key={group.title}>
                     <p className="font-en text-sm font-semibold uppercase tracking-[0.14em] text-amber-700">
@@ -581,7 +581,7 @@ export default function RPAAutomationCaseStudy() {
                     {text.resultItems.map((item) => (
                       <div
                         key={item}
-                        className="rounded-[1rem] border border-[#d8ccb4] bg-[#fffdf8] px-4 py-3 text-center text-zinc-950"
+                        className="flex items-center justify-center rounded-[1rem] border border-[#d8ccb4] bg-[#fffdf8] px-4 py-3 text-center text-zinc-950"
                       >
                         {item}
                       </div>
