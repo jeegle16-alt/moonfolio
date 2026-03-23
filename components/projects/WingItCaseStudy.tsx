@@ -634,13 +634,6 @@ function WingItCoreImplementation() {
                   >
                     {card.description}
                   </p>
-                  {"code" in card && card.code ? (
-                    <pre className="mt-5 overflow-x-auto rounded-[1.1rem] bg-slate-900 p-5 text-sm leading-7 text-slate-100 shadow-[0_12px_24px_rgba(15,23,42,0.18)]">
-                      <code className="font-mono">
-                        {card.code.map((line) => `${line}\n`)}
-                      </code>
-                    </pre>
-                  ) : null}
                 </article>
               ))}
             </div>
