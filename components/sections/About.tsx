@@ -68,7 +68,7 @@ const certificates = [
       kr: "AWS 공인 솔루션스 아키텍트 - 어소시에이트",
       en: "AWS Certified Solutions Architect - Associate",
     },
-    year: "(2026.04.11)",
+    year: "(2026.04.)",
   },
 ];
 
