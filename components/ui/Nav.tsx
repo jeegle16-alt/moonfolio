@@ -40,7 +40,7 @@ function LocaleToggle() {
 
 export default function Nav() {
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 border-b-2 border-zinc-950 bg-[#F3EBDD]">
+    <header className="fixed top-0 left-0 right-0 z-50 border-b-2 border-zinc-950 bg-[#F3EBDD] print:hidden">
       <nav className="mx-auto flex w-[92vw] max-w-[1100px] flex-wrap items-center gap-x-4 gap-y-3 py-4 sm:grid sm:h-20 sm:max-w-[80vw] sm:grid-cols-[auto_1fr_auto] sm:gap-6 sm:py-0">
         <Link
           href="/"
