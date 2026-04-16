@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { caveat, geistMono, orbit, spaceGrotesk } from "@/lib/fonts";
 import { LocaleProvider } from "@/components/providers/LocaleProvider";
 import Nav from "@/components/ui/Nav";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -24,6 +25,7 @@ export default function RootLayout({
           <Nav />
           {children}
         </LocaleProvider>
+        <Analytics />
       </body>
     </html>
   );
