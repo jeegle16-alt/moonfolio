@@ -47,13 +47,15 @@ export default function ProjectCard({
     "relative flex min-h-[188px] w-full items-end justify-center overflow-visible rounded-2xl bg-[#f1e8d8] px-2 pt-4 pb-3 sm:min-h-[238px] sm:px-3 sm:pt-5 sm:pb-4 lg:h-full lg:min-h-[338px] lg:rounded-none lg:bg-transparent lg:px-0 lg:py-0 lg:aspect-auto";
   const mobileSecondaryMockupClass =
     "wingit-cutout-shadow h-auto w-[100%] min-w-0 max-w-[340px] object-contain sm:max-w-[460px]";
-  const secondaryMockupClass =
-    `${mobileSecondaryMockupClass} lg:w-[130%] lg:min-w-[500px] lg:max-w-[760px]`;
   const containedSecondaryMockupClass =
-    `${mobileSecondaryMockupClass} lg:w-[124%] lg:min-w-0 lg:max-w-[600px] xl:max-w-[720px] 2xl:max-w-[780px]`;
+    `${mobileSecondaryMockupClass} lg:w-[112%] lg:min-w-0 lg:max-w-[540px] xl:max-w-[640px] 2xl:max-w-[700px]`;
+  const containedRpaMockupClass =
+    `${mobileSecondaryMockupClass} lg:w-[116%] lg:min-w-0 lg:max-w-[560px] xl:max-w-[700px] 2xl:max-w-[780px]`;
+  const nyangnyangMockupClass =
+    "h-auto w-full object-contain drop-shadow-[0_18px_30px_rgba(0,0,0,0.14)]";
   const cardGridClass = hasHurdleHurdleVisual
     ? "grid gap-8 lg:grid-cols-[120px_minmax(0,1.1fr)_minmax(300px,0.9fr)] lg:items-stretch"
-    : hasFlowshipVisual || hasWordpressVisual
+    : hasWingitVisual || hasFlowshipVisual || hasWordpressVisual || hasRpaVisual
       ? "grid gap-8 lg:grid-cols-[120px_minmax(0,1.05fr)_minmax(360px,0.95fr)] lg:items-stretch"
       : "grid gap-8 lg:grid-cols-[120px_minmax(0,1.2fr)_minmax(300px,0.8fr)] lg:items-stretch";
 
@@ -125,7 +127,10 @@ export default function ProjectCard({
         {hasVisual ? (
         <div
           className={`hidden min-w-0 pt-1 md:block lg:pt-0 ${
-            hasFlowshipVisual || hasWordpressVisual
+            hasWingitVisual ||
+            hasFlowshipVisual ||
+            hasWordpressVisual ||
+            hasRpaVisual
               ? "overflow-hidden"
               : "overflow-visible"
           } ${isEven ? "lg:pl-6" : ""}`}
@@ -133,30 +138,26 @@ export default function ProjectCard({
           {hasEditorialVisual ? (
             <div className="lg:ml-auto lg:h-full lg:w-full">
               <div className="relative min-h-[196px] w-full overflow-hidden rounded-2xl bg-[#f1e8d8] px-2 pt-4 pb-6 sm:min-h-[248px] sm:px-3 sm:pt-5 sm:pb-6 md:min-h-[292px] md:overflow-visible lg:h-full lg:min-h-[338px] lg:overflow-visible lg:rounded-none lg:bg-transparent lg:px-0 lg:py-0 lg:aspect-auto">
-                <div className="absolute left-3 top-3 z-0 flex items-start justify-center sm:left-3 sm:top-3 lg:left-2 lg:top-2">
-                  <div className="transition-transform duration-300 group-hover:scale-[1.04] lg:group-hover:scale-[1.04]">
+                <div className="absolute inset-x-2 top-1/2 flex -translate-y-1/2 -translate-x-3 items-center justify-center gap-2 sm:inset-x-3 sm:gap-3 lg:inset-x-0 lg:-translate-x-5">
+                  <div className="z-0 w-[28%] max-w-[132px] transition-transform duration-300 group-hover:scale-[1.04] sm:max-w-[152px] md:max-w-[164px] lg:max-w-[184px]">
                     <Image
                       src={ui4}
                       alt="NyangNyang Letter UI 1"
-                      className="h-auto w-[36%] min-w-[104px] max-w-[148px] object-contain drop-shadow-[0_18px_30px_rgba(0,0,0,0.14)] sm:min-w-[150px] sm:max-w-[220px] lg:w-[41%] lg:min-w-[184px] lg:max-w-[248px]"
+                      className={nyangnyangMockupClass}
                     />
                   </div>
-                </div>
-                <div className="absolute left-1/2 top-3 z-10 flex -translate-x-1/2 items-start justify-center sm:top-3 lg:top-2">
-                  <div className="transition-transform duration-300 group-hover:scale-[1.04]">
+                  <div className="z-10 w-[28%] max-w-[132px] transition-transform duration-300 group-hover:scale-[1.04] sm:max-w-[152px] md:max-w-[164px] lg:max-w-[184px]">
                     <Image
                       src={ui2}
                       alt="NyangNyang Letter UI 2"
-                      className="h-auto w-[36%] min-w-[104px] max-w-[148px] object-contain drop-shadow-[0_18px_30px_rgba(0,0,0,0.16)] sm:min-w-[150px] sm:max-w-[220px] lg:w-[41%] lg:min-w-[184px] lg:max-w-[248px]"
+                      className="h-auto w-full object-contain drop-shadow-[0_18px_30px_rgba(0,0,0,0.16)]"
                     />
                   </div>
-                </div>
-                <div className="absolute right-3 top-3 z-0 flex items-start justify-center sm:right-3 sm:top-3 lg:right-2 lg:top-2">
-                  <div className="transition-transform duration-300 group-hover:scale-[1.04]">
+                  <div className="z-0 w-[28%] max-w-[132px] transition-transform duration-300 group-hover:scale-[1.04] sm:max-w-[152px] md:max-w-[164px] lg:max-w-[184px]">
                     <Image
                       src={ui5}
                       alt="NyangNyang Letter UI 3"
-                      className="h-auto w-[36%] min-w-[104px] max-w-[148px] object-contain drop-shadow-[0_18px_30px_rgba(0,0,0,0.14)] sm:min-w-[150px] sm:max-w-[220px] lg:w-[41%] lg:min-w-[184px] lg:max-w-[248px]"
+                      className={nyangnyangMockupClass}
                     />
                   </div>
                 </div>
@@ -165,12 +166,12 @@ export default function ProjectCard({
           ) : hasWingitVisual ? (
             <div className="lg:ml-auto lg:h-full lg:w-full">
               <div className={mobileMockupFrameClass}>
-                <div className="absolute bottom-0 left-1/2 z-10 flex w-full -translate-x-1/2 items-end justify-center lg:left-auto lg:right-[1.2rem] lg:translate-x-0 lg:justify-end">
+                <div className="absolute left-1/2 top-1/2 z-10 flex w-full -translate-x-1/2 -translate-y-1/2 items-center justify-center lg:left-auto lg:right-[-0.25rem] lg:translate-x-0 lg:justify-end xl:right-[-0.5rem]">
                   <div className="rotate-2 transition-transform duration-300 group-hover:scale-[1.04]">
                     <Image
                       src={wingitUi}
                       alt="WING IT UI mockup"
-                      className={`${mobileSecondaryMockupClass} lg:w-[122%] lg:min-w-[440px] lg:max-w-[680px]`}
+                      className={containedSecondaryMockupClass}
                     />
                   </div>
                 </div>
@@ -180,7 +181,7 @@ export default function ProjectCard({
             <div className="lg:ml-auto lg:h-full lg:w-full">
               <div className={mobileMockupFrameClass}>
                 <div className="absolute left-1/2 top-1/2 z-10 flex w-full -translate-x-1/2 -translate-y-1/2 items-center justify-center lg:left-0 lg:right-0 lg:translate-x-0">
-                  <div className="w-[70%] max-w-[290px] transition-transform duration-300 group-hover:scale-[1.02] sm:max-w-[325px] md:max-w-[345px] lg:w-[72%] lg:max-w-[290px] xl:w-[80%] xl:max-w-[410px] 2xl:max-w-[480px]">
+                  <div className="w-[66%] max-w-[270px] transition-transform duration-300 group-hover:scale-[1.02] sm:max-w-[305px] md:max-w-[325px] lg:w-[68%] lg:max-w-[270px] xl:w-[74%] xl:max-w-[380px] 2xl:max-w-[440px]">
                     <Image
                       src={hurdlehurdleUi}
                       alt="HurdleHurdle UI mockup"
@@ -193,7 +194,7 @@ export default function ProjectCard({
           ) : hasFlowshipVisual ? (
             <div className="lg:ml-auto lg:h-full lg:w-full">
               <div className={mobileMockupFrameClass}>
-                <div className="absolute left-1/2 top-1/2 z-10 flex w-full -translate-x-1/2 -translate-y-1/2 items-center justify-center lg:left-auto lg:right-0 lg:translate-x-0 lg:justify-end">
+                <div className="absolute left-1/2 top-1/2 z-10 flex w-full -translate-x-1/2 -translate-y-1/2 items-center justify-center lg:left-auto lg:right-[-0.5rem] lg:translate-x-0 lg:justify-end xl:right-[-0.75rem] 2xl:right-[-1rem]">
                   <div className="-rotate-2 transition-transform duration-300 group-hover:scale-[1.04]">
                     <Image
                       src={flowshipUi}
@@ -221,12 +222,12 @@ export default function ProjectCard({
           ) : hasRpaVisual ? (
             <div className="lg:ml-auto lg:h-full lg:w-full">
               <div className={mobileMockupFrameClass}>
-                <div className="absolute bottom-0 left-1/2 z-10 flex w-full -translate-x-1/2 items-end justify-center lg:bottom-[-1.2rem] lg:left-auto lg:right-[1.8rem] lg:translate-x-0 lg:justify-end">
+                <div className="absolute left-1/2 top-1/2 z-10 flex w-full -translate-x-1/2 -translate-y-1/2 items-center justify-center lg:left-auto lg:right-0 lg:translate-x-0 lg:justify-end">
                   <div className="-rotate-2 transition-transform duration-300 group-hover:scale-[1.04]">
                     <Image
                       src={rpaUi}
                       alt="RPA automation projects UI mockup"
-                      className={secondaryMockupClass}
+                      className={containedRpaMockupClass}
                     />
                   </div>
                 </div>

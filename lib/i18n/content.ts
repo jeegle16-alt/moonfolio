@@ -37,7 +37,7 @@ export const longFormContent = {
   contact: {
     body: {
       en: "Open to opportunities, collaborations, and thoughtful conversations. Feel free to reach out.",
-      kr: "좋은 기회로 만나 뵐 수 있으면 좋겠습니다.",
+      kr: "새로운 기회나 협업, 대화 모두 언제든 환영합니다. 좋은 기회로 만나 뵐 수 있으면 좋겠습니다. 편하게 연락 주세요.",
     },
   },
 } as const;
@@ -182,7 +182,7 @@ export const projectListContent: Record<
     },
     role: {
       en: "AI / ML Project",
-      kr: "AI / ML 프로젝트",
+      kr: "AI / ML Project",
     },
     description: {
       en: "AI-powered service that detects behavioral changes from smartphone activity and turns them into social support signals.",
@@ -196,7 +196,7 @@ export const projectListContent: Record<
     },
     role: {
       en: "ML Project",
-      kr: "ML 프로젝트",
+      kr: "ML Project",
     },
     description: {
       en: "An ML service that learns airfare price patterns and recommends the best purchase timing.",
@@ -224,7 +224,7 @@ export const projectListContent: Record<
     },
     role: {
       en: "DevOps Project",
-      kr: "DevOps 프로젝트",
+      kr: "DevOps Project",
     },
     description: {
       en: "A GitOps-based CI/CD pipeline project built with Jenkins, Docker, ArgoCD, and Kubernetes.",
@@ -238,7 +238,7 @@ export const projectListContent: Record<
     },
     role: {
       en: "Infrastructure Project",
-      kr: "인프라 프로젝트",
+      kr: "Infrastructure Project",
     },
     description: {
       en: "A high-availability WordPress infrastructure project with web redundancy, load balancing, and database replication.",
@@ -252,7 +252,7 @@ export const projectListContent: Record<
     },
     role: {
       en: "RPA Internship Projects",
-      kr: "RPA 인턴십 프로젝트",
+      kr: "RPA Internship Projects",
     },
     description: {
       en: "A collection of internship automation projects built with Automation Anywhere for repetitive business tasks.",
