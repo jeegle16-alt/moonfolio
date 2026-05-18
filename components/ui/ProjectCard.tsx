@@ -50,7 +50,7 @@ export default function ProjectCard({
   const containedSecondaryMockupClass =
     `${mobileSecondaryMockupClass} lg:w-[112%] lg:min-w-0 lg:max-w-[540px] xl:max-w-[640px] 2xl:max-w-[700px]`;
   const containedRpaMockupClass =
-    `${mobileSecondaryMockupClass} lg:w-[116%] lg:min-w-0 lg:max-w-[560px] xl:max-w-[700px] 2xl:max-w-[780px]`;
+    `${mobileSecondaryMockupClass} lg:w-[116%] lg:min-w-0 lg:max-w-[560px] xl:max-w-[680px] 2xl:max-w-[720px]`;
   const nyangnyangMockupClass =
     "h-auto w-full object-contain drop-shadow-[0_18px_30px_rgba(0,0,0,0.14)]";
   const cardGridClass = hasHurdleHurdleVisual
