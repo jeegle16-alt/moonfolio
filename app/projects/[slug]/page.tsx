@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import CICDPipelineCaseStudy from "@/components/projects/CICDPipelineCaseStudy";
+import HurdleHurdleCaseStudy from "@/components/projects/HurdleHurdleCaseStudy";
 import HighAvailabilityInfrastructureCaseStudy from "@/components/projects/HighAvailabilityInfrastructureCaseStudy";
 import NyangnyangLetterCaseStudy from "@/components/projects/NyangnyangLetterCaseStudy";
 import RPAAutomationCaseStudy from "@/components/projects/RPAAutomationCaseStudy";
@@ -45,6 +46,10 @@ export default async function ProjectPage({
 
   if (slug === "wingit") {
     return <WingItCaseStudy />;
+  }
+
+  if (slug === "hurdlehurdle") {
+    return <HurdleHurdleCaseStudy />;
   }
 
   if (slug === "cicd-pipeline") {

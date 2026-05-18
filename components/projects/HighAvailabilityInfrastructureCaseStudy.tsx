@@ -180,12 +180,12 @@ const copy: Record<"kr" | "en", PageCopy> = {
     ],
     learnedCards: [
       {
-        title: "고가용성을 위한 통합 인프라 설계",
-        body: "웹 서버 이중화뿐 아니라 로드밸런싱, 데이터베이스 복제, 파일 공유 구조까지 함께 설계되어야 서비스가 안정적으로 운영될 수 있다는 점을 직접 확인했습니다.",
+        title: "단일 장애점 제거를 목표로 한 통합 설계",
+        body: "웹서버 이중화, HAProxy 로드밸런싱, MySQL Primary-Secondary 복제, iSCSI 스토리지, NFS 공유를 7개 서버로 나눠 구성하고, web01의 httpd를 강제 종료해도 HAProxy가 web02로 자동 우회해 서비스가 끊기지 않는 것을 직접 확인했습니다. 가용성은 서버 한 대를 튼튼하게 만드는 것이 아니라 어느 한 구성요소가 죽어도 전체가 멈추지 않도록 설계하는 문제라는 것을 배웠습니다.",
       },
       {
-        title: "동작 검증 중심의 인프라 구축",
-        body: "웹 접속, 데이터 동기화, 요청 분산, 장애 대응 테스트를 진행하면서 구성한 구조가 실제로 어떻게 동작하는지 직접 확인할 수 있었습니다.",
+        title: "구성요소 간 설정 정합성 디버깅 경험",
+        body: "iSCSI 연결이 TPG의 인증 비활성화([no-auth]) 때문에 실패하고, 복제 시작 이전에 만든 WP DB가 동기화되지 않아 Slave SQL 스레드가 멈추는 문제를 로그로 원인을 좁혀 직접 해결했습니다. 분산 인프라는 개별 서버가 모두 정상이어도 구성요소 간 설정이 어긋나면 전체가 동작하지 않으며, 증상에서 원인 지점을 추적하는 과정이 인프라 운영의 핵심이라는 것을 배웠습니다.",
       },
     ],
   },
@@ -315,12 +315,12 @@ const copy: Record<"kr" | "en", PageCopy> = {
     ],
     learnedCards: [
       {
-        title: "Integrated Infrastructure Design for High Availability",
-        body: "This project made it clear that stable service operation depends on designing load balancing, database replication, and shared file handling together, not just adding more web servers.",
+        title: "Integrated Design to Remove Single Points of Failure",
+        body: "I split the infrastructure across seven servers, including redundant web servers, HAProxy load balancing, MySQL Primary-Secondary replication, iSCSI storage, and NFS sharing. I also verified that even when httpd on web01 was forcibly stopped, HAProxy automatically routed traffic to web02 and the service stayed available. I learned that availability is not about making one server stronger, but about designing the system so one failed component does not stop the whole service.",
       },
       {
-        title: "Infrastructure Built Around Verification",
-        body: "By testing web access, data synchronization, traffic distribution, and failover, I was able to confirm how the designed structure actually behaves in practice.",
+        title: "Debugging Configuration Consistency Across Components",
+        body: "I traced and fixed issues where the iSCSI connection failed because TPG authentication was disabled ([no-auth]), and where the Slave SQL thread stopped because a WordPress DB created before replication was not synchronized. I learned that in distributed infrastructure, each server can look healthy on its own while the whole system still fails if component settings do not align, and that tracing symptoms back to the failing configuration point is central to infrastructure operations.",
       },
     ],
   },

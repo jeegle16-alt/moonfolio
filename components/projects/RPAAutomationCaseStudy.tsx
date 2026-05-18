@@ -54,7 +54,7 @@ const copy = {
     projectTwoImplementationPoints: [
       {
         title: "1. 메일 제목 기반 고객사 식별",
-        body: "계약 완료 메일 제목에서 고객사명을 추출하고, 소스 파일의 대체 고객사명 컬럼을 기준으로 매칭하도록 구성",
+        body: "계약 완료 메일 제목에서 고객사명을 추출하고, 소스 파일의 대체 고객사명 컬럼을 기준으로 1차 매칭하도록 구성. 대체 컬럼에서 매칭되지 않는 경우에는 OpenAI API로 유사 고객사명을 보정하는 2차 단계를 추가해 미등록 오타까지 대응",
       },
       {
         title: "2. 시작일 자동 업데이트 및 예외 처리",
@@ -95,16 +95,16 @@ const copy = {
     learnedTitle: "What I Learned",
     learnedCards: [
       {
-        title: "운영 가능한 자동화의 중요성",
-        body: "자동화는 한 번 실행되는 것보다, 반복 실행과 예외 상황에서도 안정적으로 동작할 수 있어야 한다는 점을 배웠습니다.",
+        title: "화면이 아닌 데이터에 연결하는 자동화",
+        body: "UI를 따라가는 봇은 화면이 조금만 바뀌어도 멈췄지만, 인증 기반으로 데이터에 직접 접근하자 영향을 받지 않았습니다. 자동화는 사람이 보는 화면이 아니라 데이터에 연결해야 안정적이라는 점을 배웠습니다.",
       },
       {
-        title: "명확한 조건 설계의 중요성",
-        body: "날짜 기준, 고객사 식별, 종료 조건처럼 작은 로직 차이도 전체 결과에 영향을 줄 수 있어, 조건을 명확하게 설계하는 것이 중요하다는 점을 배웠습니다.",
+        title: "비용과 정확도를 나눠 받는 단계 설계",
+        body: "대체 컬럼으로 대부분을 먼저 거르고, 매칭되지 않은 건만 OpenAI로 넘기는 2단계 구조를 설계했습니다. 비용이 드는 방식을 꼭 필요한 곳에만 쓰는 게 정확도와 비용을 함께 잡는 길임을 배웠습니다.",
       },
       {
-        title: "유지보수까지 고려한 개선의 중요성",
-        body: "기존 업무를 그대로 옮기는 것보다, UI 의존도나 반복 계산처럼 비효율적인 부분을 함께 개선하는 것이 더 실용적인 자동화로 이어진다는 점을 경험했습니다.",
+        title: "기존 업무를 그대로 옮기지 않는 개선",
+        body: "수동 방식을 그대로 자동화하는 대신, 반복 계산처럼 비효율적인 부분까지 함께 걷어냈습니다. 그대로 옮기는 것보다 비효율을 함께 개선해야 실용적인 자동화가 된다는 점을 경험했습니다.",
       },
     ],
   },
@@ -158,7 +158,7 @@ const copy = {
     projectTwoImplementationPoints: [
       {
         title: "1. Customer identification by email subject",
-        body: "The customer name was extracted from the contract completion email subject and matched against the alternate customer-name column in the source file.",
+        body: "The customer name was extracted from the contract completion email subject and first matched against the alternate customer-name column in the source file. For cases that did not match through that column, a second step used the OpenAI API to correct similar customer names, covering even unregistered typos.",
       },
       {
         title: "2. Automatic start-date update and exception handling",
@@ -201,16 +201,16 @@ const copy = {
     learnedTitle: "What I Learned",
     learnedCards: [
       {
-        title: "The importance of automation that can run reliably",
-        body: "I learned that automation should not only run once, but also remain stable across repeated runs and exception cases.",
+        title: "Automation Should Connect to Data, Not Screens",
+        body: "Bots that followed the UI stopped when the screen changed even slightly, but direct authenticated access to the data was unaffected. I learned that stable automation should connect to the underlying data, not to the screen a person sees.",
       },
       {
-        title: "The importance of clear condition design",
-        body: "I learned that even small differences in date rules, customer identification, or stop conditions can affect the entire result, so defining conditions clearly is important.",
+        title: "Separating Cost and Accuracy by Stage",
+        body: "I designed a two-step flow that filtered most cases through the alternate customer-name column first, then sent only unmatched cases to OpenAI. I learned that using costly methods only where they are needed is the key to improving accuracy while controlling cost.",
       },
       {
-        title: "The importance of improvements with maintenance in mind",
-        body: "Rather than simply copying the existing process, improving inefficient parts such as UI dependency or repeated calculations led to more practical automation.",
+        title: "Improving the Workflow Instead of Copying It",
+        body: "Rather than automating the manual process exactly as it was, I also removed inefficient parts such as repeated calculations. I learned that practical automation comes from improving the workflow itself, not just moving the existing steps into a bot.",
       },
     ],
   },

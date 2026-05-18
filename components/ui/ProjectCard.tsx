@@ -9,6 +9,7 @@ import ui4 from "@/images/nyangnyang-ui4.png";
 import ui2 from "@/images/nyangnyang-ui2.png";
 import ui5 from "@/images/nyangnyang-ui5.png";
 import wingitUi from "@/images/wingit-ui.png";
+import hurdlehurdleUi from "@/images/hurdlehurdle-ui.png";
 import flowshipUi from "@/images/flowship-ui.png";
 import wordpressUi from "@/images/wordpress-ui.png";
 import rpaUi from "@/images/rpa-ui.png";
@@ -24,9 +25,17 @@ export default function ProjectCard({
   const isEven = index % 2 === 0;
   const hasEditorialVisual = project.slug === "nyangnyang-letter";
   const hasWingitVisual = project.slug === "wingit";
+  const hasHurdleHurdleVisual = project.slug === "hurdlehurdle";
   const hasFlowshipVisual = project.slug === "cicd-pipeline";
   const hasWordpressVisual = project.slug === "high-availability-infrastructure";
   const hasRpaVisual = project.slug === "rpa-automation";
+  const hasVisual =
+    hasEditorialVisual ||
+    hasWingitVisual ||
+    hasHurdleHurdleVisual ||
+    hasFlowshipVisual ||
+    hasWordpressVisual ||
+    hasRpaVisual;
   const localizedProject = projectListContent[project.slug];
   const displayTitle = localizedProject?.title[locale] ?? project.title;
   const displayRole =
@@ -40,13 +49,20 @@ export default function ProjectCard({
     "wingit-cutout-shadow h-auto w-[100%] min-w-0 max-w-[340px] object-contain sm:max-w-[460px]";
   const secondaryMockupClass =
     `${mobileSecondaryMockupClass} lg:w-[130%] lg:min-w-[500px] lg:max-w-[760px]`;
+  const containedSecondaryMockupClass =
+    `${mobileSecondaryMockupClass} lg:w-[124%] lg:min-w-0 lg:max-w-[600px] xl:max-w-[720px] 2xl:max-w-[780px]`;
+  const cardGridClass = hasHurdleHurdleVisual
+    ? "grid gap-8 lg:grid-cols-[120px_minmax(0,1.1fr)_minmax(300px,0.9fr)] lg:items-stretch"
+    : hasFlowshipVisual || hasWordpressVisual
+      ? "grid gap-8 lg:grid-cols-[120px_minmax(0,1.05fr)_minmax(360px,0.95fr)] lg:items-stretch"
+      : "grid gap-8 lg:grid-cols-[120px_minmax(0,1.2fr)_minmax(300px,0.8fr)] lg:items-stretch";
 
   return (
     <Link
       href={`/projects/${project.slug}`}
       className="group block border-t border-zinc-950 py-5 transition-colors hover:bg-[#efe3cf]/45"
     >
-      <div className="grid gap-8 lg:grid-cols-[120px_minmax(0,1.2fr)_minmax(300px,0.8fr)] lg:items-stretch">
+      <div className={cardGridClass}>
         <div className="flex items-end gap-4 lg:flex-col lg:items-start lg:gap-3">
           <span className="font-mono text-[clamp(2.8rem,6vw,5rem)] leading-none text-zinc-950/85">
             {String(index + 1).padStart(2, "0")}
@@ -55,13 +71,7 @@ export default function ProjectCard({
 
         <div
           className={`flex flex-col gap-5 ${isEven ? "" : "lg:pr-8"} ${
-            hasEditorialVisual ||
-            hasWingitVisual ||
-            hasFlowshipVisual ||
-            hasWordpressVisual ||
-            hasRpaVisual
-              ? ""
-              : "lg:col-span-2"
+            hasVisual ? "" : "lg:col-span-2"
           } lg:h-full`}
         >
           <div className="space-y-5">
@@ -112,8 +122,13 @@ export default function ProjectCard({
           </span>
         </div>
 
+        {hasVisual ? (
         <div
-          className={`hidden min-w-0 overflow-visible pt-1 md:block lg:pt-0 ${isEven ? "lg:pl-6" : ""}`}
+          className={`hidden min-w-0 pt-1 md:block lg:pt-0 ${
+            hasFlowshipVisual || hasWordpressVisual
+              ? "overflow-hidden"
+              : "overflow-visible"
+          } ${isEven ? "lg:pl-6" : ""}`}
         >
           {hasEditorialVisual ? (
             <div className="lg:ml-auto lg:h-full lg:w-full">
@@ -161,15 +176,29 @@ export default function ProjectCard({
                 </div>
               </div>
             </div>
+          ) : hasHurdleHurdleVisual ? (
+            <div className="lg:ml-auto lg:h-full lg:w-full">
+              <div className={mobileMockupFrameClass}>
+                <div className="absolute left-1/2 top-1/2 z-10 flex w-full -translate-x-1/2 -translate-y-1/2 items-center justify-center lg:left-0 lg:right-0 lg:translate-x-0">
+                  <div className="w-[70%] max-w-[290px] transition-transform duration-300 group-hover:scale-[1.02] sm:max-w-[325px] md:max-w-[345px] lg:w-[72%] lg:max-w-[290px] xl:w-[80%] xl:max-w-[410px] 2xl:max-w-[480px]">
+                    <Image
+                      src={hurdlehurdleUi}
+                      alt="HurdleHurdle UI mockup"
+                      className="wingit-cutout-shadow h-auto w-full min-w-0 object-contain"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
           ) : hasFlowshipVisual ? (
             <div className="lg:ml-auto lg:h-full lg:w-full">
               <div className={mobileMockupFrameClass}>
-                <div className="absolute bottom-0 left-1/2 z-10 flex w-full -translate-x-1/2 items-end justify-center lg:bottom-[-1.2rem] lg:left-auto lg:right-[1.8rem] lg:translate-x-0 lg:justify-end">
+                <div className="absolute left-1/2 top-1/2 z-10 flex w-full -translate-x-1/2 -translate-y-1/2 items-center justify-center lg:left-auto lg:right-0 lg:translate-x-0 lg:justify-end">
                   <div className="-rotate-2 transition-transform duration-300 group-hover:scale-[1.04]">
                     <Image
                       src={flowshipUi}
                       alt="FLOWSHIP UI mockup"
-                      className={secondaryMockupClass}
+                      className={containedSecondaryMockupClass}
                     />
                   </div>
                 </div>
@@ -178,12 +207,12 @@ export default function ProjectCard({
           ) : hasWordpressVisual ? (
             <div className="lg:ml-auto lg:h-full lg:w-full">
               <div className={mobileMockupFrameClass}>
-                <div className="absolute bottom-0 left-1/2 z-10 flex w-full -translate-x-1/2 items-end justify-center lg:bottom-[-1.2rem] lg:left-auto lg:right-[1.8rem] lg:translate-x-0 lg:justify-end">
+                <div className="absolute left-1/2 top-1/2 z-10 flex w-full -translate-x-1/2 -translate-y-1/2 items-center justify-center lg:left-auto lg:right-0 lg:translate-x-0 lg:justify-end">
                   <div className="rotate-2 transition-transform duration-300 group-hover:scale-[1.04]">
                     <Image
                       src={wordpressUi}
                       alt="WordPress HA infrastructure mockup"
-                      className={secondaryMockupClass}
+                      className={containedSecondaryMockupClass}
                     />
                   </div>
                 </div>
@@ -205,6 +234,7 @@ export default function ProjectCard({
             </div>
           ) : null}
         </div>
+        ) : null}
       </div>
     </Link>
   );

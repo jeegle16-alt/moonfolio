@@ -102,12 +102,12 @@ const copy = {
       "프로젝트를 진행하며 모델 성능뿐 아니라, 데이터·배포·서빙까지 연결되는 전체 ML 시스템 관점을 배웠습니다.",
     learnedCards: [
       {
-        title: "End-to-End MLOps 흐름 설계",
-        body: "모델 학습에서 끝나는 것이 아니라, 전처리 산출물 관리, 배포, API 서빙까지 이어지는 전체 흐름을 설계하는 경험을 했습니다.",
+        title: "혼자 설계한 첫 End-to-End MLOps 경험",
+        body: "전처리부터 학습·평가·등록·배포까지 전 단계를 SageMaker Pipeline으로 직접 정의하고, 코드로 작성한 파이프라인을 upsert해 실행·관리하는 구조를 혼자 처음부터 끝까지 구현했습니다. 모델을 만드는 것과 그 모델이 실제로 서빙되는 것은 별개의 문제이며, 단계 간 데이터와 산출물을 잇는 구조 설계가 MLOps의 핵심이라는 것을 체감했습니다.",
       },
       {
-        title: "운영 안정성을 위한 구조의 중요성",
-        body: "S3 아티팩트 관리, MLflow 실험 추적, CloudWatch 로그 확인을 통해 재현성과 디버깅 용이성이 얼마나 중요한지 체감했습니다.",
+        title: "학습 환경과 배포 환경의 불일치 해결 경험",
+        body: "S3 버킷명, MLflow Tracking Server ARN, CORS에서 반복적으로 막혔는데, 모두 학습 시점엔 정상이던 설정이 배포 시점에 어긋나며 발생한 문제였습니다. CloudWatch 로그로 원인을 단계별로 추적해 해결하면서, 로컬에서 동작하는 것과 운영 환경에서 동작하는 것은 다르며 환경 의존 설정을 명시적으로 관리해야 한다는 것을 배웠습니다.",
       },
     ],
   },
@@ -208,12 +208,12 @@ const copy = {
       "This project taught me a full ML systems perspective connecting data, deployment, and serving with model quality.",
     learnedCards: [
       {
-        title: "End-to-End MLOps Flow Design",
-        body: "I designed the complete flow, covering preprocessing artifact management, deployment, and API serving—not just the model training step.",
+        title: "My First Solo End-to-End MLOps Build",
+        body: "I implemented the full SageMaker Pipeline flow on my own, from preprocessing to training, evaluation, registration, and deployment. I also managed the pipeline through code by upserting and running it directly. This made it clear that building a model and serving that model are separate problems, and that MLOps depends on designing how data and artifacts move between each stage.",
       },
       {
-        title: "Importance of Structured Operational Stability",
-        body: "Managing S3 artifacts, tracking MLflow experiments, and checking CloudWatch logs made the importance of reproducibility and debuggability in production concrete.",
+        title: "Resolving Training-to-Deployment Environment Mismatches",
+        body: "I repeatedly ran into issues around the S3 bucket name, MLflow Tracking Server ARN, and CORS. In each case, settings that worked during training no longer matched the deployment environment. By tracing the causes step by step through CloudWatch logs, I learned that working locally and working in production are different, and that environment-dependent configuration must be managed explicitly.",
       },
     ],
   },

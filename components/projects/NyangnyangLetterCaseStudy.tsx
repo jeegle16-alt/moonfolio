@@ -953,24 +953,24 @@ export default function NyangnyangLetterCaseStudy() {
               <div className="absolute left-1/2 top-0 h-[18px] w-[60px] -translate-x-1/2 -translate-y-1/2 rotate-[-2deg] rounded-[2px] bg-[rgba(251,191,36,0.35)]" />
               <p className="text-[1.7rem] font-bold text-amber-700">01</p>
               <p className="mt-2 mb-3 text-xl font-bold text-[#1a1a1a]">
-                {isKr ? "다양한 AI 기술의 서비스 통합" : "Integrating Multiple AI Technologies into One Service"}
+                {isKr ? "라벨 없는 데이터에서 문제 재정의 경험" : "Redefining the Problem Without Reliable Labels"}
               </p>
               <p className="text-[1.02rem] leading-8 text-[#4f463d] sm:text-[1.12rem]">
                 {isKr
-                  ? "음성 변환, 콘텐츠 검증, 우선순위 판단까지\n서로 다른 AI 기술을 하나의 서비스 안에서\n각자의 역할에 맞게 연결했습니다."
-                  : "From voice conversion to content verification to priority decisions, I connected different AI technologies inside a single service so each could fulfill its role."}
+                  ? "정신건강 라벨(PHQ-8)이 전체의 18%에 불과해 지도학습이 구조적으로 불가능했습니다. 사용자 간 행동 편차가 극심한(Screen 사용량 표준편차 최대 331) 점을 반영해 전역 기준이 아닌 개인 베이스라인 기반 Z-score 정규화 구조를 직접 설계했고, 라벨이 없을 때 풀 수 있는 문제로 재정의하는 것이 모델 선택보다 먼저라는 것을 배웠습니다."
+                  : "PHQ-8 mental health labels covered only 18% of the dataset, which made supervised learning structurally unsuitable. Because behavior varied heavily across users, with screen-usage standard deviation reaching up to 331, I designed a Z-score normalization structure based on each user's personal baseline instead of a global threshold. I learned that when labels are limited, redefining the problem into something the data can support comes before choosing a model."}
               </p>
             </div>
             <div className="relative mt-3 rotate-[-1.2deg] rounded-[4px] bg-[#FFFDF7] p-8 shadow-[0_4px_16px_rgba(0,0,0,0.10)]">
               <div className="absolute left-1/2 top-0 h-[18px] w-[60px] -translate-x-1/2 -translate-y-1/2 rotate-[3deg] rounded-[2px] bg-[rgba(251,191,36,0.35)]" />
               <p className="text-[1.7rem] font-bold text-amber-700">02</p>
               <p className="mt-2 mb-3 text-xl font-bold text-[#1a1a1a]">
-                {isKr ? "AWS 서비스 기반 프로덕션 아키텍처 설계" : "Designing an AWS-Based Production Architecture"}
+                {isKr ? "이질적 AI를 하나의 서비스로 통합한 경험" : "Integrating Heterogeneous AI Modules into One Service"}
               </p>
               <p className="text-[1.02rem] leading-8 text-[#4f463d] sm:text-[1.12rem]">
                 {isKr
-                  ? "SageMaker · EKS · Lambda · Athena 등 다양한 서비스를 목적에 맞게 선택하고 연결하며 클라우드 기반 서비스 설계 전반을 경험했습니다."
-                  : "By choosing and connecting SageMaker, EKS, Lambda, Athena, and other services for the right purpose, I got hands-on experience with end-to-end cloud service design."}
+                  ? "이상탐지 ML, 음성 변환, 콘텐츠 검증을 AWS 위에서 하나의 서비스로 연결했습니다. 각 AI를 단일 모듈로 분리해 입력만으로 결과가 나오도록 Stateless하게 설계하니, 모델 하나의 정확도보다 모듈 간 책임 분리가 전체 서비스 안정성을 좌우한다는 것을 배웠습니다."
+                  : "I connected anomaly-detection ML, voice conversion, and content verification into one AWS-based service. By separating each AI capability into a stateless module that could produce an output from its input alone, I learned that clear module responsibility can matter more to service reliability than the accuracy of any single model."}
               </p>
             </div>
           </div>

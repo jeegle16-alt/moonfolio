@@ -122,6 +122,12 @@ export const projectSummaries: Record<
       kr: "항공권 가격의 시간적 변동 패턴을 학습해 최적의 구매 타이밍을 예측하는 ML 서비스입니다.",
     },
   },
+  hurdlehurdle: {
+    description: {
+      en: "Forecasted weekly menu-level demand for a resort F&B operation by modeling a zero-heavy sales pattern in two steps: whether an item would sell, and how much it would sell when it did.",
+      kr: "판매량 0이 빈번하게 발생하는 식음업장 데이터를 분석하고, 판매 발생 여부와 판매량 규모를 분리한 Hurdle Model로 메뉴별 주간 수요를 예측한 프로젝트",
+    },
+  },
   "cicd-pipeline": {
     description: {
       en: "A GitOps-based CI/CD pipeline project built with Jenkins, Docker, ArgoCD, and Kubernetes.",
@@ -195,6 +201,20 @@ export const projectListContent: Record<
     description: {
       en: "An ML service that learns airfare price patterns and recommends the best purchase timing.",
       kr: "항공권 가격 패턴을 학습해 최적의 구매 시점을 추천하는 ML 서비스입니다.",
+    },
+  },
+  hurdlehurdle: {
+    title: {
+      en: "Resort F&B Demand Forecasting",
+      kr: "리조트 F&B 수요 예측 모델링",
+    },
+    role: {
+      en: "ML Project",
+      kr: "ML Project",
+    },
+    description: {
+      en: "Forecasted weekly menu-level demand for a resort F&B operation by modeling a zero-heavy sales pattern in two steps: whether an item would sell, and how much it would sell when it did.",
+      kr: "판매량 0이 빈번하게 발생하는 식음업장 데이터를 분석하고, 판매 발생 여부와 판매량 규모를 분리한 Hurdle Model로 메뉴별 주간 수요를 예측한 프로젝트",
     },
   },
   "cicd-pipeline": {

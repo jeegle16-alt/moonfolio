@@ -27,6 +27,15 @@ export const projects: Project[] = [
     role: "ML PROJECT",
   },
   {
+    slug: "hurdlehurdle",
+    title: "리조트 F&B 수요 예측 모델링",
+    description:
+      "판매량 0이 빈번하게 발생하는 식음업장 데이터를 분석하고, 판매 발생 여부와 판매량 규모를 분리한 Hurdle Model로 메뉴별 주간 수요를 예측한 프로젝트",
+    tags: ["Python", "Pandas", "NumPy", "LightGBM"],
+    year: "2024",
+    role: "ML Project",
+  },
+  {
     slug: "cicd-pipeline",
     title: "FLOWSHIP",
     description:

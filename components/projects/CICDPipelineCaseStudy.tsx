@@ -196,12 +196,12 @@ pybo-web-5845df55f4-ks9tg   1/1   Running   0   5s`,
     ],
     learnedCards: [
       {
-        title: "배포 전체 흐름으로서의 CI/CD",
-        body: "코드 변경부터 Kubernetes 반영까지 직접 연결해보며, CI/CD가 단순한 빌드가 아니라 전체 배포 과정을 다루는 구조라는 점을 이해하게 되었습니다.",
+        title: "원하는 상태를 Git에 적어두는 배포 방식",
+        body: "처음엔 Pod 개수를 늘리려면 클러스터에 직접 명령을 내리는 거라고 생각했습니다. 그런데 Ops Repo의 YAML에서 replica를 2에서 3으로 바꿔 push하니, ArgoCD가 변경을 감지해 클러스터를 그 상태로 맞췄습니다. 단계를 일일이 지시하는 게 아니라 원하는 상태를 Git에 적어두면 시스템이 따라온다는 방식을 처음 접했고, 배포를 보는 시각이 달라졌습니다.",
       },
       {
-        title: "분리된 저장소 기반의 배포 자동화 구조",
-        body: "App Repo와 Ops Repo를 분리해 운영하면서, 코드와 배포 설정은 연결되지만 다르게 관리될 수 있다는 점을 배웠습니다.",
+        title: "설계로 확보하는 운영 안정성",
+        body: "테스트로 Pod를 강제 삭제했는데 몇 초 만에 새 Pod가 자동 생성되어 개수가 그대로 유지됐습니다. 장애는 사람이 붙어서 막아야 한다고만 생각했는데, 미리 그렇게 설계해두면 시스템이 알아서 견딘다는 걸 직접 보고 운영을 바라보는 관점이 바뀌었습니다.",
       },
     ],
   },
@@ -349,12 +349,12 @@ pybo-web-5845df55f4-ks9tg   1/1   Running   0   5s`,
     ],
     learnedCards: [
       {
-        title: "CI/CD as the Full Deployment Flow",
-        body: "By directly connecting code changes all the way to Kubernetes rollout, I came to understand that CI/CD is a structure that covers the entire deployment process, not just build automation.",
+        title: "Declaring the Desired State in Git",
+        body: "At first, I thought scaling Pods meant sending commands directly to the cluster. But when I changed replicas from 2 to 3 in the Ops Repo YAML and pushed it, ArgoCD detected the change and reconciled the cluster to that state. This was my first hands-on experience with describing the desired state in Git instead of issuing every deployment step manually, and it changed how I understood deployment.",
       },
       {
-        title: "Deployment Automation Architecture Based on Separate Repositories",
-        body: "By operating App Repo and Ops Repo separately, I learned that code and deployment configuration are connected, but can still be managed differently.",
+        title: "Operational Stability Through Design",
+        body: "When I forcibly deleted a Pod during testing, a new Pod was created within seconds and the replica count stayed stable. I had thought failures always required someone to intervene, but seeing the system recover because it had been designed that way changed how I think about operations.",
       },
     ],
   },
