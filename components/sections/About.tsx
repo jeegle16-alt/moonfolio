@@ -70,6 +70,13 @@ const certificates = [
     },
     year: "(2026.04.)",
   },
+  {
+    name: {
+      kr: "정보처리기사",
+      en: "Engineer Information Processing",
+    },
+    year: "(2026.06.)",
+  },
 ];
 
 const experience = [
