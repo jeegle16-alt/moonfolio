@@ -77,6 +77,13 @@ const certificates = [
     },
     year: "(2026.06.)",
   },
+  {
+    name: {
+      kr: "SQLD",
+      en: "SQLD",
+    },
+    year: "(2026.06.)",
+  },
 ];
 
 const experience = [
