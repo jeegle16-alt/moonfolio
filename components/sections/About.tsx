@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import type { ReactNode } from "react";
 import { useLocale } from "@/components/providers/LocaleProvider";
@@ -83,6 +83,13 @@ const certificates = [
       en: "SQLD",
     },
     year: "(2026.06.)",
+  },
+  {
+    name: {
+      kr: "HashiCorp Certified: Terraform Associate",
+      en: "HashiCorp Certified: Terraform Associate",
+    },
+    year: "(2026.09.)",
   },
 ];
 
